@@ -62,6 +62,16 @@ export const ComplaintCard = ({
           {complaint.description}
         </p>
 
+        {complaint.imageUrl && (
+          <div className="mb-4 overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
+            <img
+              src={complaint.imageUrl}
+              alt={complaint.title}
+              className="h-40 w-full object-cover"
+            />
+          </div>
+        )}
+
         {/* Officer Remark Alert (if any) */}
         {complaint.officerRemark && (
           <div className="mb-4 flex items-start gap-2.5 rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs text-amber-800">

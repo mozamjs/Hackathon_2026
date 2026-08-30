@@ -1,6 +1,6 @@
 import React from 'react';
-import { ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import BrandMark from '../components/common/BrandMark';
 
 export const Footer = () => {
   return (
@@ -9,10 +9,11 @@ export const Footer = () => {
         <div className="grid gap-8 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="mb-3 flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-600 text-white">
-                <ShieldCheck className="h-5 w-5" />
+              <BrandMark className="h-10 w-10" />
+              <div>
+                <div className="text-lg font-semibold tracking-[-0.04em] text-slate-900">AwamDesk</div>
+                <div className="text-[9px] font-medium uppercase tracking-[0.16em] text-slate-500">Report. Track. Improve.</div>
               </div>
-              <span className="text-lg font-semibold text-slate-900">CivicFix</span>
             </div>
             <p className="max-w-md text-sm text-slate-600">
               Empowering residents to report issues, follow progress, and hold public services accountable.
@@ -39,7 +40,7 @@ export const Footer = () => {
         </div>
 
         <div className="mt-8 border-t border-slate-200 pt-5 text-sm text-slate-500">
-          © {new Date().getFullYear()} CivicFix Portal. Built for municipal transparency and civic collaboration.
+          © {new Date().getFullYear()} AwamDesk. Built for municipal transparency and civic collaboration.
         </div>
       </div>
     </footer>

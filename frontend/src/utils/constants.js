@@ -14,29 +14,3 @@ export const STATUSES = [
   { id: 'resolved', label: 'Resolved', color: 'emerald' },
 ];
 
-export const DEMO_USERS = [
-  {
-    role: 'officer',
-    name: 'Officer Tariq Baloch',
-    email: 'officer@civicfix.demo',
-    password: 'Officer123!',
-    tag: 'Municipal Officer',
-    desc: 'Triage, update statuses, & generate AI briefings'
-  },
-  {
-    role: 'citizen',
-    name: 'Ahmed Khan',
-    email: 'ahmed@civicfix.demo',
-    password: 'Citizen123!',
-    tag: 'Active Citizen',
-    desc: 'Submit complaints, upvote, & leave feedback'
-  },
-  {
-    role: 'citizen',
-    name: 'Fatima Ali',
-    email: 'fatima@civicfix.demo',
-    password: 'Citizen123!',
-    tag: 'Community Lead',
-    desc: 'Submit complaints & monitor local area'
-  },
-];

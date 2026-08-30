@@ -62,15 +62,15 @@ export const StatusUpdateModal = ({
     >
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div>
-          <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+          <span className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
             Target Complaint
           </span>
-          <p className="text-sm font-bold text-slate-100 mt-0.5 line-clamp-1">
+          <p className="mt-0.5 line-clamp-1 text-sm font-semibold text-slate-900">
             {complaint?.title}
           </p>
-          <p className="text-xs text-slate-400 mt-0.5">
-            Area: <span className="text-slate-200">{complaint?.area}</span> | Category:{' '}
-            <span className="text-slate-200 capitalize">{complaint?.category}</span>
+          <p className="mt-0.5 text-xs text-slate-600">
+            Area: <span className="text-slate-800">{complaint?.area}</span> | Category:{' '}
+            <span className="capitalize text-slate-800">{complaint?.category}</span>
           </p>
         </div>
 
@@ -90,7 +90,7 @@ export const StatusUpdateModal = ({
           helperText="This note will be visible to the citizen author and community on the timeline."
         />
 
-        <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-800">
+        <div className="flex items-center justify-end gap-3 border-t border-slate-200 pt-3">
           <Button variant="ghost" onClick={onClose} disabled={loading}>
             Cancel
           </Button>

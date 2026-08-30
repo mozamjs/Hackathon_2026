@@ -3,16 +3,16 @@ import { Layers, MapPin } from 'lucide-react';
 
 export const CategoryBreakdown = ({ topCategories = [], topAreas = [], total = 0 }) => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
       {/* Top Categories */}
-      <div className="glass-panel p-5 rounded-2xl border border-slate-800">
-        <h4 className="text-sm font-bold text-slate-200 mb-4 flex items-center gap-2">
-          <Layers className="w-4 h-4 text-brand-400" />
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-card">
+        <h4 className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-800">
+          <Layers className="h-4 w-4 text-primary-600" />
           <span>Issues by Category</span>
         </h4>
 
         {topCategories.length === 0 ? (
-          <p className="text-xs text-slate-500 py-4">No category data recorded yet.</p>
+          <p className="py-4 text-xs text-slate-500">No category data recorded yet.</p>
         ) : (
           <div className="space-y-3">
             {topCategories.map((item) => {
@@ -20,16 +20,16 @@ export const CategoryBreakdown = ({ topCategories = [], topAreas = [], total = 0
               return (
                 <div key={item.category} className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-semibold text-slate-300 capitalize">
+                    <span className="font-semibold capitalize text-slate-700">
                       {item.category}
                     </span>
-                    <span className="text-slate-400 font-mono">
+                    <span className="font-mono text-slate-500">
                       {item.count} ({percentage}%)
                     </span>
                   </div>
-                  <div className="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                  <div className="h-2 w-full overflow-hidden rounded-full bg-slate-200">
                     <div
-                      className="h-full bg-brand-500 rounded-full transition-all duration-500"
+                      className="h-full rounded-full bg-primary-500 transition-all duration-500"
                       style={{ width: `${percentage}%` }}
                     />
                   </div>
@@ -41,14 +41,14 @@ export const CategoryBreakdown = ({ topCategories = [], topAreas = [], total = 0
       </div>
 
       {/* Top Areas */}
-      <div className="glass-panel p-5 rounded-2xl border border-slate-800">
-        <h4 className="text-sm font-bold text-slate-200 mb-4 flex items-center gap-2">
-          <MapPin className="w-4 h-4 text-emerald-400" />
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-card">
+        <h4 className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-800">
+          <MapPin className="h-4 w-4 text-emerald-600" />
           <span>Top Affected Areas</span>
         </h4>
 
         {topAreas.length === 0 ? (
-          <p className="text-xs text-slate-500 py-4">No area data recorded yet.</p>
+          <p className="py-4 text-xs text-slate-500">No area data recorded yet.</p>
         ) : (
           <div className="space-y-3">
             {topAreas.map((item) => {
@@ -56,16 +56,16 @@ export const CategoryBreakdown = ({ topCategories = [], topAreas = [], total = 0
               return (
                 <div key={item.area} className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-semibold text-slate-300 truncate max-w-[200px]">
+                    <span className="max-w-[200px] truncate font-semibold text-slate-700">
                       {item.area}
                     </span>
-                    <span className="text-slate-400 font-mono">
+                    <span className="font-mono text-slate-500">
                       {item.count} ({percentage}%)
                     </span>
                   </div>
-                  <div className="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                  <div className="h-2 w-full overflow-hidden rounded-full bg-slate-200">
                     <div
-                      className="h-full bg-emerald-500 rounded-full transition-all duration-500"
+                      className="h-full rounded-full bg-emerald-500 transition-all duration-500"
                       style={{ width: `${percentage}%` }}
                     />
                   </div>

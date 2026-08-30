@@ -3,7 +3,6 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import useToast from '../hooks/useToast';
 import {
-  ShieldCheck,
   PlusCircle,
   FolderOpen,
   LayoutDashboard,
@@ -14,6 +13,7 @@ import {
   Compass,
 } from 'lucide-react';
 import Button from '../components/common/Button';
+import BrandMark from '../components/common/BrandMark';
 
 export const Navbar = () => {
   const { user, isAuthenticated, isOfficer, isCitizen, logout } = useAuth();
@@ -40,15 +40,16 @@ export const Navbar = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-600 text-white shadow-sm">
-              <ShieldCheck className="h-5 w-5" />
-            </div>
+            <BrandMark className="h-9 w-9" />
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-lg font-semibold text-slate-900">CivicFix</span>
+                <span className="text-lg font-semibold tracking-[-0.04em] text-slate-900">AwamDesk</span>
                 <span className="rounded border border-primary-200 bg-primary-50 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-primary-700">
-                  Portal
+                  Civic
                 </span>
+              </div>
+              <div className="text-[9px] font-medium uppercase tracking-[0.16em] text-slate-500">
+                Report. Track. Improve.
               </div>
             </div>
           </Link>

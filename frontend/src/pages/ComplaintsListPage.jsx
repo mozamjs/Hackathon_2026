@@ -75,16 +75,16 @@ export const ComplaintsListPage = () => {
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <div className="flex items-center gap-2 text-brand-400 text-xs font-bold uppercase tracking-wider mb-1">
-            <Compass className="w-4 h-4" />
+          <div className="mb-1 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-primary-700">
+            <Compass className="h-4 w-4" />
             <span>Community Feed</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 font-sans">
+          <h1 className="text-2xl font-semibold text-slate-900 sm:text-3xl">
             Public Civic Complaints
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="mt-1 text-sm text-slate-600">
             Browse, search, and upvote local municipal issues across all municipal domains.
           </p>
         </div>
@@ -115,12 +115,12 @@ export const ComplaintsListPage = () => {
 
       {/* Results Section */}
       <div>
-        <div className="flex items-center justify-between text-xs text-slate-400 mb-4 px-1">
+        <div className="mb-4 flex items-center justify-between px-1 text-xs text-slate-500">
           <span>
-            Showing <strong className="text-slate-200">{complaints.length}</strong> complaint
+            Showing <strong className="text-slate-800">{complaints.length}</strong> complaint
             {complaints.length === 1 ? '' : 's'}
           </span>
-          <span className="font-mono">
+          <span className="font-mono text-slate-600">
             Sorted by: {sort === 'upvotes' ? 'Most Upvoted' : 'Most Recent'}
           </span>
         </div>

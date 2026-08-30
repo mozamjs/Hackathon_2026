@@ -67,12 +67,12 @@ export const ComplaintDetailPage = () => {
 
   if (error || !complaint) {
     return (
-      <div className="max-w-md mx-auto py-16 text-center space-y-4">
-        <div className="w-16 h-16 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center mx-auto">
-          <AlertTriangle className="w-8 h-8" />
+      <div className="mx-auto max-w-md py-16 text-center space-y-4">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-red-200 bg-red-50 text-red-600">
+          <AlertTriangle className="h-8 w-8" />
         </div>
-        <h2 className="text-xl font-bold text-slate-100">{error || 'Complaint Not Found'}</h2>
-        <p className="text-xs text-slate-400">
+        <h2 className="text-xl font-semibold text-slate-900">{error || 'Complaint Not Found'}</h2>
+        <p className="text-xs text-slate-600">
           The requested complaint ID does not exist or may have been removed.
         </p>
         <Link to="/complaints">
@@ -102,7 +102,7 @@ export const ComplaintDetailPage = () => {
       <div className="flex items-center justify-between">
         <button
           onClick={() => navigate(-1)}
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 transition-colors hover:text-slate-900"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to previous page</span>
@@ -118,10 +118,10 @@ export const ComplaintDetailPage = () => {
       </div>
 
       {/* Main Details Card */}
-      <div className="glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6">
+      <div className="space-y-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-card sm:p-8">
         {/* Badges & Meta row */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800/80">
-          <div className="flex items-center gap-2.5 flex-wrap">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
+          <div className="flex flex-wrap items-center gap-2.5">
             <CategoryBadge category={complaint.category} size="md" />
             <PriorityBadge priority={priority} priorityScore={priorityScore} size="md" />
           </div>
@@ -129,51 +129,66 @@ export const ComplaintDetailPage = () => {
         </div>
 
         {/* Title */}
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 font-sans tracking-tight leading-snug">
+        <h1 className="text-2xl font-semibold leading-snug text-slate-900 sm:text-3xl">
           {complaint.title}
         </h1>
 
         {/* Sub-meta details bar */}
-        <div className="flex flex-wrap items-center gap-y-3 gap-x-6 text-xs text-slate-400 p-4 rounded-2xl bg-slate-900/90 border border-slate-800">
-          <div className="flex items-center gap-1.5 text-slate-200 font-medium">
-            <MapPin className="w-4 h-4 text-brand-400" />
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-xs text-slate-600">
+          <div className="flex items-center gap-1.5 font-medium text-slate-800">
+            <MapPin className="h-4 w-4 text-primary-600" />
             <span>{complaint.area}</span>
           </div>
 
           <div className="flex items-center gap-1.5">
-            <User className="w-4 h-4 text-slate-400" />
+            <User className="h-4 w-4 text-slate-500" />
             <span>Submitted by: </span>
-            <strong className="text-slate-200">
+            <strong className="text-slate-800">
               {complaint.createdBy?.name || 'Citizen'}
             </strong>
           </div>
 
           <div className="flex items-center gap-1.5">
-            <Clock className="w-4 h-4 text-slate-400" />
+            <Clock className="h-4 w-4 text-slate-500" />
             <span>Logged: </span>
-            <strong className="text-slate-200">{formatDate(complaint.createdAt)}</strong>
+            <strong className="text-slate-800">{formatDate(complaint.createdAt)}</strong>
             <span className="text-slate-500">({formatRelativeTime(complaint.createdAt)})</span>
           </div>
         </div>
 
         {/* Full Description */}
         <div className="space-y-2">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+          <h3 className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
             Issue Description
           </h3>
-          <p className="text-sm sm:text-base text-slate-200 leading-relaxed whitespace-pre-line bg-slate-950/50 p-5 rounded-2xl border border-slate-800/80">
+          <p className="whitespace-pre-line rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-700 sm:text-base">
             {complaint.description}
           </p>
         </div>
 
+        {complaint.imageUrl && (
+          <div className="space-y-2">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
+              Submitted Image
+            </h3>
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-2">
+              <img
+                src={complaint.imageUrl}
+                alt={complaint.title}
+                className="h-80 w-full rounded-xl object-cover"
+              />
+            </div>
+          </div>
+        )}
+
         {/* Interactive Upvote & Priority Computation Box */}
-        <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="flex flex-col justify-between gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:flex-row sm:items-center">
           <div>
-            <span className="text-xs font-bold text-brand-400 uppercase tracking-wider block">
+            <span className="block text-xs font-semibold uppercase tracking-[0.12em] text-primary-700">
               Civic Engagement & Urgency Metric
             </span>
-            <p className="text-xs text-slate-400 mt-0.5">
-              Score: <strong className="text-slate-200">{priorityScore}</strong> = ({upvotes} upvotes × 2) + {daysSinceCreated} days active
+            <p className="mt-0.5 text-xs text-slate-600">
+              Score: <strong className="text-slate-800">{priorityScore}</strong> = ({upvotes} upvotes × 2) + {daysSinceCreated} days active
             </p>
           </div>
 
@@ -188,10 +203,10 @@ export const ComplaintDetailPage = () => {
 
         {/* Citizen Feedback Banner */}
         {complaint.status === 'resolved' && (
-          <div className="p-6 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-100 space-y-3">
-            <div className="flex items-center justify-between flex-wrap gap-2">
-              <div className="flex items-center gap-2 font-bold text-sm text-emerald-200">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+          <div className="space-y-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 text-emerald-800">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex items-center gap-2 text-sm font-semibold text-emerald-800">
+                <CheckCircle2 className="h-5 w-5 text-emerald-600" />
                 <span>Municipal Resolution Verified</span>
               </div>
 
@@ -208,31 +223,31 @@ export const ComplaintDetailPage = () => {
             </div>
 
             {complaint.feedbackGiven ? (
-              <div className="p-4 rounded-xl bg-slate-950/80 border border-emerald-500/20 space-y-2">
+              <div className="space-y-2 rounded-xl border border-emerald-200 bg-white p-4">
                 <div className="flex items-center gap-2">
                   <div className="flex text-amber-400">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className={`w-4 h-4 ${
+                        className={`h-4 w-4 ${
                           i < complaint.feedbackRating ? 'fill-amber-400 text-amber-400' : 'text-slate-600'
                         }`}
                       />
                     ))}
                   </div>
-                  <span className="text-xs font-bold text-amber-300">
+                  <span className="text-xs font-bold text-amber-700">
                     {complaint.feedbackRating} / 5 Stars
                   </span>
-                  <span className="text-xs text-slate-400">by Citizen Author</span>
+                  <span className="text-xs text-slate-500">by Citizen Author</span>
                 </div>
                 {complaint.feedbackComment && (
-                  <p className="text-xs text-slate-300 italic">
+                  <p className="text-xs italic text-slate-600">
                     "{complaint.feedbackComment}"
                   </p>
                 )}
               </div>
             ) : (
-              <p className="text-xs text-emerald-300/80">
+              <p className="text-xs text-emerald-700">
                 This issue was fixed by the municipal team. Feedback has not yet been provided by the author.
               </p>
             )}

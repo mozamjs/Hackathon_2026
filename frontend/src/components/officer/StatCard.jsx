@@ -20,29 +20,29 @@ export const StatCard = ({
   const selectedColor = colorMap[color] || colorMap.brand;
 
   return (
-    <div className="glass-panel p-5 rounded-2xl border border-slate-800 flex flex-col justify-between relative overflow-hidden group hover:border-slate-700 transition-all">
-      <div className="flex items-center justify-between gap-2 mb-3">
-        <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+    <div className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-card transition-all hover:border-slate-300">
+      <div className="mb-3 flex items-center justify-between gap-2">
+        <span className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
           {title}
         </span>
         {Icon && (
           <div
-            className={`w-9 h-9 rounded-xl bg-gradient-to-br ${selectedColor} border flex items-center justify-center shadow-sm`}
+            className={`flex h-9 w-9 items-center justify-center rounded-xl border bg-slate-50 ${selectedColor} shadow-sm`}
           >
-            <Icon className="w-5 h-5" />
+            <Icon className="h-5 w-5" />
           </div>
         )}
       </div>
 
       <div>
-        <div className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight font-sans">
+        <div className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
           {value !== undefined ? value : '—'}
         </div>
-        {subtitle && <p className="text-xs text-slate-400 mt-1">{subtitle}</p>}
+        {subtitle && <p className="mt-1 text-xs text-slate-600">{subtitle}</p>}
       </div>
 
       {trend && (
-        <div className="mt-3 pt-2.5 border-t border-slate-800/80 text-[11px] text-slate-400 flex items-center gap-1">
+        <div className="mt-3 flex items-center gap-1 border-t border-slate-200 pt-2.5 text-[11px] text-slate-500">
           {trend}
         </div>
       )}

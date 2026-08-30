@@ -83,17 +83,17 @@ export const UpvoteButton = ({
           ? 'You upvoted this issue'
           : 'Upvote to raise issue urgency & municipal priority'
       }
-      className={`inline-flex items-center font-semibold rounded-xl transition-all duration-200 border ${
+      className={`inline-flex items-center rounded-xl border font-semibold transition-all duration-200 ${
         isUpvotedState
-          ? 'bg-brand-600/20 text-brand-400 border-brand-500/40 cursor-default'
-          : 'bg-slate-800/90 hover:bg-brand-600 text-slate-200 hover:text-white border-slate-700 hover:border-brand-500/50 hover:shadow-lg hover:shadow-brand-500/20 active:scale-95'
+          ? 'cursor-default border-primary-200 bg-primary-50 text-primary-700'
+          : 'border-slate-200 bg-white text-slate-700 hover:border-primary-300 hover:bg-primary-50 hover:text-primary-700 active:scale-95'
       } ${sizeClasses[size] || sizeClasses.md} ${className}`}
     >
       {isUpvotedState ? (
-        <Check className="w-4 h-4 text-brand-400 flex-shrink-0" />
+        <Check className="h-4 w-4 flex-shrink-0 text-primary-700" />
       ) : (
         <ThumbsUp
-          className={`w-4 h-4 flex-shrink-0 transition-transform ${
+          className={`h-4 w-4 flex-shrink-0 transition-transform ${
             loading ? 'animate-bounce' : 'group-hover:-translate-y-0.5'
           }`}
         />

@@ -13,11 +13,12 @@ const {
 } = require('../controllers/complaintController');
 const { protect } = require('../middleware/authMiddleware');
 const { requireOfficer, requireCitizen } = require('../middleware/roleMiddleware');
+const { complaintImageUpload } = require('../middleware/uploadMiddleware');
 
 // 1. Static / specific routes (must be defined before /:id)
 
 // Create a complaint (Citizen only)
-router.post('/', protect, requireCitizen, createComplaint);
+router.post('/', protect, requireCitizen, complaintImageUpload, createComplaint);
 
 // Get all complaints with filters/sorting (Public)
 router.get('/', getComplaints);

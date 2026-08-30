@@ -57,7 +57,7 @@ export const LoginPage = () => {
           <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-white shadow-sm">
             <ShieldCheck className="h-7 w-7" />
           </div>
-          <h1 className="text-2xl font-semibold text-slate-900">Sign in to CivicFix</h1>
+          <h1 className="text-2xl font-semibold text-slate-900">Sign in to AwamDesk</h1>
           <p className="mt-1 text-sm text-slate-600">
             Access your citizen reports or municipal officer dashboard.
           </p>
@@ -79,7 +79,7 @@ export const LoginPage = () => {
             icon={Mail}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="e.g., ahmed@civicfix.demo"
+            placeholder="e.g., name@example.gov"
             required
           />
 

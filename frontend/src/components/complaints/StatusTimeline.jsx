@@ -9,28 +9,28 @@ export const StatusTimeline = ({ complaint }) => {
   const isResolved = status === 'resolved';
 
   return (
-    <div className="glass-card rounded-2xl p-6 border border-slate-800">
-      <h3 className="text-base font-bold text-slate-100 mb-6 flex items-center gap-2">
-        <Clock className="w-5 h-5 text-brand-400" />
+    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
+      <h3 className="mb-6 flex items-center gap-2 text-base font-semibold text-slate-900">
+        <Clock className="h-5 w-5 text-primary-600" />
         <span>Complaint Lifecycle & Audit Trail</span>
       </h3>
 
-      <div className="relative pl-6 sm:pl-8 space-y-8 before:absolute before:left-3 sm:before:left-4 before:top-3 before:bottom-3 before:w-0.5 before:bg-slate-800">
+      <div className="relative space-y-8 pl-6 before:absolute before:left-3 before:top-3 before:bottom-3 before:w-0.5 before:bg-slate-200 sm:pl-8 sm:before:left-4">
         {/* Step 1: Submission */}
         <div className="relative">
-          <div className="absolute -left-6 sm:-left-8 top-0 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-brand-600 text-white flex items-center justify-center shadow-lg shadow-brand-500/20 border-2 border-slate-950">
-            <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+          <div className="absolute -left-6 top-0 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-primary-600 text-white shadow-sm sm:-left-8 sm:h-8 sm:w-8">
+            <CheckCircle2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
           </div>
           <div className="flex flex-col">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <span className="text-sm font-bold text-slate-100">Submitted by Citizen</span>
-              <span className="text-xs text-slate-400 font-mono">
+              <span className="text-sm font-semibold text-slate-900">Submitted by Citizen</span>
+              <span className="font-mono text-xs text-slate-500">
                 {formatDate(complaint?.createdAt)}
               </span>
             </div>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="mt-1 text-xs text-slate-600">
               Issue logged in municipal registry and categorized as{' '}
-              <span className="font-semibold text-slate-200 capitalize">
+              <span className="font-semibold capitalize text-slate-800">
                 {complaint?.category}
               </span>
               .
@@ -57,19 +57,19 @@ export const StatusTimeline = ({ complaint }) => {
           <div className="flex flex-col">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <span
-                className={`text-sm font-bold ${
-                  isInProgress || isResolved ? 'text-slate-100' : 'text-slate-500'
+                className={`text-sm font-semibold ${
+                  isInProgress || isResolved ? 'text-slate-900' : 'text-slate-500'
                 }`}
               >
                 Municipal Triage & Operations
               </span>
               {(isInProgress || isResolved) && (
-                <span className="text-xs text-sky-400 font-medium bg-sky-500/10 px-2 py-0.5 rounded border border-sky-500/20">
+                <span className="rounded border border-sky-200 bg-sky-50 px-2 py-0.5 text-xs font-medium text-sky-700">
                   {isResolved ? 'Completed' : 'Active'}
                 </span>
               )}
             </div>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="mt-1 text-xs text-slate-600">
               {isInProgress
                 ? 'Assigned to field municipal team for on-site inspection and remedial action.'
                 : isResolved
@@ -78,10 +78,10 @@ export const StatusTimeline = ({ complaint }) => {
             </p>
 
             {complaint?.officerRemark && (
-              <div className="mt-3 p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-start gap-2.5 text-xs text-slate-300">
-                <ShieldAlert className="w-4 h-4 text-brand-400 flex-shrink-0 mt-0.5" />
+              <div className="mt-3 flex items-start gap-2.5 rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs text-amber-800">
+                <ShieldAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600" />
                 <div>
-                  <span className="font-semibold text-brand-300">Official Remark: </span>
+                  <span className="font-semibold">Official Remark: </span>
                   <span>{complaint.officerRemark}</span>
                 </div>
               </div>
@@ -103,19 +103,19 @@ export const StatusTimeline = ({ complaint }) => {
           <div className="flex flex-col">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <span
-                className={`text-sm font-bold ${
-                  isResolved ? 'text-emerald-300' : 'text-slate-500'
+                className={`text-sm font-semibold ${
+                  isResolved ? 'text-emerald-700' : 'text-slate-500'
                 }`}
               >
                 Resolution & Verification
               </span>
               {isResolved && complaint?.resolvedAt && (
-                <span className="text-xs text-emerald-400 font-mono">
+                <span className="font-mono text-xs text-emerald-700">
                   {formatDate(complaint.resolvedAt)}
                 </span>
               )}
             </div>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="mt-1 text-xs text-slate-600">
               {isResolved
                 ? 'Complaint has been marked resolved by municipal officer. Citizen feedback requested.'
                 : 'Final municipal verification pending.'}

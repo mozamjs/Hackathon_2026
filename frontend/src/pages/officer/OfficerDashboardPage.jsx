@@ -92,16 +92,16 @@ export const OfficerDashboardPage = () => {
   return (
     <div className="space-y-8">
       {/* Officer Header Banner */}
-      <div className="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col justify-between gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-card sm:flex-row sm:items-center sm:p-8">
         <div>
-          <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">
-            <ShieldCheck className="w-4 h-4" />
+          <div className="mb-1 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-amber-700">
+            <ShieldCheck className="h-4 w-4" />
             <span>Municipal Operations Portal</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 font-sans">
+          <h1 className="text-2xl font-semibold text-slate-900 sm:text-3xl">
             Officer Triage Command — {user?.name || 'Officer'}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="mt-1 text-sm text-slate-600">
             Live municipal issue queue, dynamic priority triage, and automated Gemini AI briefings.
           </p>
         </div>
@@ -167,14 +167,14 @@ export const OfficerDashboardPage = () => {
       )}
 
       {/* Live Triage Queue Table */}
-      <div className="glass-card rounded-3xl p-6 border border-slate-800 space-y-5">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="space-y-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
+        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
           <div>
-            <h3 className="text-lg font-bold text-slate-100 flex items-center gap-2">
-              <Flame className="w-5 h-5 text-rose-500" />
+            <h3 className="flex items-center gap-2 text-lg font-semibold text-slate-900">
+              <Flame className="h-5 w-5 text-red-500" />
               <span>Municipal Triage & Dispatch Queue</span>
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="mt-0.5 text-xs text-slate-600">
               Prioritize critical issues with high community upvotes and assign field repair teams
             </p>
           </div>
@@ -185,7 +185,7 @@ export const OfficerDashboardPage = () => {
               <select
                 value={priorityFilter}
                 onChange={(e) => setPriorityFilter(e.target.value)}
-                className="appearance-none bg-slate-900 border border-slate-700/80 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-brand-500 cursor-pointer"
+                className="cursor-pointer appearance-none rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-800 focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-100"
               >
                 <option value="all">All Priorities</option>
                 <option value="critical">Critical Priority</option>
@@ -199,7 +199,7 @@ export const OfficerDashboardPage = () => {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="appearance-none bg-slate-900 border border-slate-700/80 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-brand-500 cursor-pointer"
+                className="cursor-pointer appearance-none rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-800 focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-100"
               >
                 <option value="all">All Statuses</option>
                 <option value="pending">Pending</option>
@@ -214,29 +214,29 @@ export const OfficerDashboardPage = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Quick search..."
-                className="bg-slate-900 border border-slate-700/80 rounded-xl px-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-brand-500 w-36 sm:w-44"
+                className="w-36 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-800 placeholder:text-slate-400 focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-100 sm:w-44"
               />
             </div>
           </div>
         </div>
 
         {/* Triage Queue Table */}
-        <div className="overflow-x-auto rounded-2xl border border-slate-800/80">
-          <table className="w-full text-left border-collapse text-xs">
+        <div className="overflow-x-auto rounded-2xl border border-slate-200">
+          <table className="w-full border-collapse text-left text-xs">
             <thead>
-              <tr className="bg-slate-900/90 text-slate-400 font-bold border-b border-slate-800 uppercase tracking-wider text-[11px]">
-                <th className="py-3.5 px-4">Priority & Score</th>
-                <th className="py-3.5 px-4">Issue Details</th>
-                <th className="py-3.5 px-4">Category & Area</th>
-                <th className="py-3.5 px-4">Status</th>
-                <th className="py-3.5 px-4">Citizen Feedback</th>
-                <th className="py-3.5 px-4 text-right">Quick Action</th>
+              <tr className="border-b border-slate-200 bg-slate-50 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+                <th className="px-4 py-3.5">Priority & Score</th>
+                <th className="px-4 py-3.5">Issue Details</th>
+                <th className="px-4 py-3.5">Category & Area</th>
+                <th className="px-4 py-3.5">Status</th>
+                <th className="px-4 py-3.5">Citizen Feedback</th>
+                <th className="px-4 py-3.5 text-right">Quick Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 text-slate-300">
+            <tbody className="divide-y divide-slate-200 text-slate-700">
               {filteredTriageList.length === 0 ? (
                 <tr>
-                  <td colSpan="6" className="py-8 text-center text-slate-500 text-sm">
+                  <td colSpan="6" className="py-8 text-center text-sm text-slate-500">
                     No complaints matching current triage filters.
                   </td>
                 </tr>
@@ -244,7 +244,7 @@ export const OfficerDashboardPage = () => {
                 filteredTriageList.map((complaint) => (
                   <tr
                     key={complaint._id}
-                    className="hover:bg-slate-900/50 transition-colors group"
+                    className="group transition-colors hover:bg-slate-50"
                   >
                     {/* Priority */}
                     <td className="py-3.5 px-4 whitespace-nowrap">
@@ -259,16 +259,16 @@ export const OfficerDashboardPage = () => {
                     <td className="py-3.5 px-4 max-w-xs">
                       <Link
                         to={`/officer/complaints/${complaint._id}`}
-                        className="font-bold text-slate-100 hover:text-brand-400 line-clamp-1 block transition-colors"
+                        className="block line-clamp-1 font-semibold text-slate-900 transition-colors hover:text-primary-700"
                       >
                         {complaint.title}
                       </Link>
-                      <div className="text-[11px] text-slate-400 flex items-center gap-2 mt-0.5">
+                      <div className="mt-0.5 flex items-center gap-2 text-[11px] text-slate-500">
                         <span>by {complaint.createdBy?.name || 'Citizen'}</span>
                         <span>•</span>
                         <span>{formatRelativeTime(complaint.createdAt)}</span>
                         <span>•</span>
-                        <span className="font-semibold text-brand-300">
+                        <span className="font-semibold text-primary-700">
                           {complaint.upvotes} upvotes
                         </span>
                       </div>

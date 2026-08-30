@@ -5,14 +5,14 @@ import Button from '../components/common/Button';
 
 export const NotFoundPage = () => {
   return (
-    <div className="min-h-[60vh] flex flex-col items-center justify-center text-center p-8">
-      <div className="w-20 h-20 rounded-3xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center mb-6 shadow-xl shadow-rose-500/5">
-        <ShieldAlert className="w-10 h-10" />
+    <div className="flex min-h-[60vh] flex-col items-center justify-center p-8 text-center">
+      <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl border border-red-200 bg-red-50 text-red-600 shadow-sm">
+        <ShieldAlert className="h-10 w-10" />
       </div>
-      <h1 className="text-4xl sm:text-5xl font-black text-slate-100 font-sans tracking-tight mb-2">
+      <h1 className="mb-2 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
         404 — Page Not Found
       </h1>
-      <p className="text-sm sm:text-base text-slate-400 max-w-md mb-8">
+      <p className="mb-8 max-w-md text-sm text-slate-600 sm:text-base">
         The municipal portal page you are looking for does not exist or has been moved.
       </p>
 

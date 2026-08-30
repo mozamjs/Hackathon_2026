@@ -96,12 +96,12 @@ export const OfficerComplaintDetailPage = () => {
 
   if (error || !complaint) {
     return (
-      <div className="max-w-md mx-auto py-16 text-center space-y-4">
-        <div className="w-16 h-16 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center mx-auto">
-          <AlertTriangle className="w-8 h-8" />
+      <div className="mx-auto max-w-md py-16 text-center space-y-4">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-red-200 bg-red-50 text-red-600">
+          <AlertTriangle className="h-8 w-8" />
         </div>
-        <h2 className="text-xl font-bold text-slate-100">{error || 'Complaint Not Found'}</h2>
-        <p className="text-xs text-slate-400">The requested record is unavailable.</p>
+        <h2 className="text-xl font-semibold text-slate-900">{error || 'Complaint Not Found'}</h2>
+        <p className="text-xs text-slate-600">The requested record is unavailable.</p>
         <Link to="/officer/dashboard">
           <Button variant="outline" size="sm" icon={ArrowLeft}>
             Back to Officer Dashboard
@@ -125,7 +125,7 @@ export const OfficerComplaintDetailPage = () => {
       <div className="flex items-center justify-between">
         <Link
           to="/officer/dashboard"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 transition-colors hover:text-slate-900"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Triage Dashboard</span>
@@ -135,56 +135,71 @@ export const OfficerComplaintDetailPage = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Column: Complaint Details & Timeline (8 cols) */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6">
-            <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800/80">
-              <div className="flex items-center gap-2 flex-wrap">
+          <div className="space-y-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-card sm:p-8">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
+              <div className="flex flex-wrap items-center gap-2">
                 <CategoryBadge category={complaint.category} size="md" />
                 <PriorityBadge priority={priority} priorityScore={priorityScore} size="md" />
               </div>
               <StatusBadge status={complaint.status} size="md" />
             </div>
 
-            <h1 className="text-xl sm:text-2xl font-extrabold text-slate-100 font-sans leading-snug">
+            <h1 className="text-xl font-semibold leading-snug text-slate-900 sm:text-2xl">
               {complaint.title}
             </h1>
 
             {/* Sub-meta details bar */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300 p-4 rounded-2xl bg-slate-900/90 border border-slate-800">
+            <div className="grid grid-cols-1 gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-xs text-slate-600 sm:grid-cols-2">
               <div className="flex items-center gap-1.5">
-                <MapPin className="w-4 h-4 text-brand-400" />
-                <span>Area: <strong className="text-white">{complaint.area}</strong></span>
+                <MapPin className="h-4 w-4 text-primary-600" />
+                <span>Area: <strong className="text-slate-800">{complaint.area}</strong></span>
               </div>
 
               <div className="flex items-center gap-1.5">
-                <User className="w-4 h-4 text-slate-400" />
-                <span>Citizen: <strong className="text-white">{complaint.createdBy?.name} ({complaint.createdBy?.email})</strong></span>
+                <User className="h-4 w-4 text-slate-500" />
+                <span>Citizen: <strong className="text-slate-800">{complaint.createdBy?.name} ({complaint.createdBy?.email})</strong></span>
               </div>
 
               <div className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4 text-slate-400" />
-                <span>Submitted: <strong className="text-white">{formatDate(complaint.createdAt)}</strong></span>
+                <Clock className="h-4 w-4 text-slate-500" />
+                <span>Submitted: <strong className="text-slate-800">{formatDate(complaint.createdAt)}</strong></span>
               </div>
 
               <div className="flex items-center gap-1.5">
-                <Flame className="w-4 h-4 text-rose-400" />
-                <span>Upvotes: <strong className="text-brand-300">{upvotes} citizen votes</strong></span>
+                <Flame className="h-4 w-4 text-red-500" />
+                <span>Upvotes: <strong className="text-primary-700">{upvotes} citizen votes</strong></span>
               </div>
             </div>
 
             <div className="space-y-2">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+              <h3 className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
                 Citizen Description
               </h3>
-              <p className="text-sm text-slate-200 leading-relaxed whitespace-pre-line bg-slate-950/50 p-5 rounded-2xl border border-slate-800/80">
+              <p className="whitespace-pre-line rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-700">
                 {complaint.description}
               </p>
             </div>
 
+            {complaint.imageUrl && (
+              <div className="space-y-2">
+                <h3 className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
+                  Submitted Image
+                </h3>
+                <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-2">
+                  <img
+                    src={complaint.imageUrl}
+                    alt={complaint.title}
+                    className="h-72 w-full rounded-xl object-cover"
+                  />
+                </div>
+              </div>
+            )}
+
             {/* Citizen Feedback View if Resolved */}
             {complaint.feedbackGiven && complaint.feedbackRating && (
-              <div className="p-5 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-100 space-y-2">
+              <div className="space-y-2 rounded-2xl border border-emerald-200 bg-emerald-50 p-5 text-emerald-800">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">
+                  <span className="text-xs font-semibold uppercase tracking-[0.12em] text-emerald-700">
                     Citizen Feedback on Resolution
                   </span>
                   <div className="flex text-amber-400">
@@ -199,7 +214,7 @@ export const OfficerComplaintDetailPage = () => {
                   </div>
                 </div>
                 {complaint.feedbackComment && (
-                  <p className="text-xs text-slate-200 italic bg-slate-950/60 p-3 rounded-xl border border-emerald-500/20">
+                  <p className="rounded-xl border border-emerald-200 bg-white p-3 text-xs italic text-slate-700">
                     "{complaint.feedbackComment}"
                   </p>
                 )}
@@ -213,9 +228,9 @@ export const OfficerComplaintDetailPage = () => {
 
         {/* Right Column: Officer Action Panel (5 cols) */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="glass-card rounded-3xl p-6 border border-brand-500/30 bg-gradient-to-b from-slate-900 via-slate-900 to-brand-950/30 shadow-xl space-y-5 sticky top-24">
-            <div className="flex items-center gap-2 text-brand-400 text-xs font-bold uppercase tracking-wider pb-3 border-b border-slate-800">
-              <FileEdit className="w-4 h-4" />
+          <div className="sticky top-24 space-y-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
+            <div className="flex items-center gap-2 border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-[0.12em] text-primary-700">
+              <FileEdit className="h-4 w-4" />
               <span>Officer Action Panel</span>
             </div>
 

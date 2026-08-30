@@ -19,6 +19,8 @@ export const NewComplaintPage = () => {
   const [category, setCategory] = useState('road');
   const [area, setArea] = useState('');
   const [description, setDescription] = useState('');
+  const [imageFile, setImageFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -51,6 +53,34 @@ export const NewComplaintPage = () => {
     checkDuplicates();
   }, [category, debouncedArea]);
 
+  const handleImageChange = (event) => {
+    const file = event.target.files?.[0];
+    if (!file) {
+      setImageFile(null);
+      setImagePreview('');
+      return;
+    }
+
+    const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+    if (!validTypes.includes(file.type)) {
+      setErrorMessage('Only JPG, JPEG, PNG, and WEBP images are allowed.');
+      setImageFile(null);
+      setImagePreview('');
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      setErrorMessage('Image must be 5MB or smaller.');
+      setImageFile(null);
+      setImagePreview('');
+      return;
+    }
+
+    setErrorMessage('');
+    setImageFile(file);
+    setImagePreview(URL.createObjectURL(file));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -79,6 +109,7 @@ export const NewComplaintPage = () => {
         category,
         area: area.trim(),
         description: description.trim(),
+        image: imageFile || undefined,
       });
 
       success('Your complaint has been submitted successfully to municipal dispatch!');
@@ -114,24 +145,24 @@ export const NewComplaintPage = () => {
         </Link>
       </div>
 
-      <div className="glass-card rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-2xl space-y-8">
+      <div className="space-y-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-card sm:p-10">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-2">
-            <PlusCircle className="w-4 h-4" />
+          <div className="mb-2 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-emerald-700">
+            <PlusCircle className="h-4 w-4" />
             <span>Public Civic Grievance</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 font-sans">
+          <h1 className="text-2xl font-semibold text-slate-900 sm:text-3xl">
             Report a Municipal Issue
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="mt-1 text-sm text-slate-600">
             Provide details about the issue. Our system will check for existing community reports in real time.
           </p>
         </div>
 
         {/* Error Alert */}
         {errorMessage && (
-          <div className="p-4 rounded-xl bg-rose-950/80 border border-rose-500/40 text-rose-200 text-xs flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 text-rose-400 flex-shrink-0" />
+          <div className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+            <AlertCircle className="h-4 w-4 flex-shrink-0 text-red-500" />
             <span>{errorMessage}</span>
           </div>
         )}
@@ -198,8 +229,31 @@ export const NewComplaintPage = () => {
             required
           />
 
+          <div className="space-y-3">
+            <label className="block text-sm font-medium text-slate-700">
+              Optional complaint image
+            </label>
+            <input
+              type="file"
+              accept="image/jpeg,image/jpg,image/png,image/webp"
+              onChange={handleImageChange}
+              className="block w-full cursor-pointer rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-600 file:mr-3 file:rounded-lg file:border-0 file:bg-primary-600 file:px-3 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-primary-500"
+            />
+            <p className="text-xs text-slate-500">JPG, JPEG, PNG, WEBP only • Max 5MB</p>
+
+            {imagePreview && (
+              <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-2">
+                <img
+                  src={imagePreview}
+                  alt="Complaint preview"
+                  className="h-52 w-full rounded-xl object-cover"
+                />
+              </div>
+            )}
+          </div>
+
           {/* Submit Actions */}
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-800">
+          <div className="flex items-center justify-end gap-3 border-t border-slate-200 pt-4">
             <Button
               type="button"
               variant="ghost"

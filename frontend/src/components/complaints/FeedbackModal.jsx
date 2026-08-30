@@ -44,16 +44,16 @@ export const FeedbackModal = ({ isOpen, onClose, complaint, onFeedbackSubmitted 
       maxWidth="max-w-md"
     >
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-        <div className="text-sm text-slate-300">
-          <p className="font-semibold text-slate-100 mb-1">{complaint?.title}</p>
-          <p className="text-xs text-slate-400">
+        <div className="text-sm text-slate-600">
+          <p className="mb-1 font-semibold text-slate-900">{complaint?.title}</p>
+          <p className="text-xs text-slate-600">
             Your complaint was marked resolved by the municipal team. How satisfied are you with the resolution?
           </p>
         </div>
 
         {/* Star Rating Selector */}
-        <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-slate-950/60 border border-slate-800 gap-2">
-          <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+        <div className="flex flex-col items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 p-4">
+          <span className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
             Rating (1 to 5 Stars)
           </span>
           <div className="flex items-center gap-2">

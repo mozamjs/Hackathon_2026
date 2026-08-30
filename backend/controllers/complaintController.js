@@ -117,7 +117,7 @@ const createComplaint = async (req, res, next) => {
       return errorResponse(res, 400, 'Please provide an area or location');
     }
 
-    const complaint = await Complaint.create({
+    const complaintPayload = {
       title: title.trim(),
       description: description.trim(),
       category,
@@ -126,7 +126,13 @@ const createComplaint = async (req, res, next) => {
       createdBy: req.user._id,
       upvotes: 0,
       upvotedBy: [],
-    });
+    };
+
+    if (req.file && req.file.path) {
+      complaintPayload.imageUrl = req.file.path;
+    }
+
+    const complaint = await Complaint.create(complaintPayload);
 
     const populatedComplaint = await Complaint.findById(complaint._id).populate(
       'createdBy',
@@ -140,6 +146,11 @@ const createComplaint = async (req, res, next) => {
       attachPriority(populatedComplaint)
     );
   } catch (error) {
+    if (error && error.message) {
+      if (error.message.includes('Only JPG') || error.message.includes('File too large')) {
+        return errorResponse(res, 400, error.message);
+      }
+    }
     next(error);
   }
 };

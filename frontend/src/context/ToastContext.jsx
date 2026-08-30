@@ -33,36 +33,36 @@ export const ToastProvider = ({ children }) => {
       {/* Toast Notification Container */}
       <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-md w-full pointer-events-none px-4 sm:px-0">
         {toasts.map((toast) => {
-          let bgClass = 'bg-slate-900 border-slate-700 text-slate-100';
+          let bgClass = 'bg-white border-slate-200 text-slate-700';
           let IconComponent = Info;
-          let iconColor = 'text-blue-400';
+          let iconColor = 'text-blue-600';
 
           if (toast.type === 'success') {
-            bgClass = 'bg-emerald-950/90 border-emerald-500/40 text-emerald-100';
+            bgClass = 'bg-emerald-50 border-emerald-200 text-emerald-800';
             IconComponent = CheckCircle2;
-            iconColor = 'text-emerald-400';
+            iconColor = 'text-emerald-600';
           } else if (toast.type === 'error') {
-            bgClass = 'bg-rose-950/90 border-rose-500/40 text-rose-100';
+            bgClass = 'bg-red-50 border-red-200 text-red-700';
             IconComponent = AlertCircle;
-            iconColor = 'text-rose-400';
+            iconColor = 'text-red-600';
           } else if (toast.type === 'warning') {
-            bgClass = 'bg-amber-950/90 border-amber-500/40 text-amber-100';
+            bgClass = 'bg-amber-50 border-amber-200 text-amber-800';
             IconComponent = AlertTriangle;
-            iconColor = 'text-amber-400';
+            iconColor = 'text-amber-600';
           }
 
           return (
             <div
               key={toast.id}
-              className={`pointer-events-auto flex items-start gap-3 p-4 rounded-xl border shadow-2xl backdrop-blur-lg transition-all transform translate-y-0 animate-in fade-in slide-in-from-bottom-5 duration-200 ${bgClass}`}
+              className={`pointer-events-auto flex items-start gap-3 rounded-xl border p-4 shadow-soft transition-all duration-200 ${bgClass}`}
             >
-              <IconComponent className={`w-5 h-5 flex-shrink-0 mt-0.5 ${iconColor}`} />
-              <p className="text-sm font-medium flex-1">{toast.message}</p>
+              <IconComponent className={`mt-0.5 h-5 w-5 flex-shrink-0 ${iconColor}`} />
+              <p className="flex-1 text-sm font-medium">{toast.message}</p>
               <button
                 onClick={() => removeToast(toast.id)}
-                className="text-slate-400 hover:text-slate-200 p-0.5 rounded transition-colors"
+                className="rounded p-0.5 text-slate-500 transition-colors hover:text-slate-700"
               >
-                <X className="w-4 h-4" />
+                <X className="h-4 w-4" />
               </button>
             </div>
           );

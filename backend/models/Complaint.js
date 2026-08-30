@@ -26,6 +26,11 @@ const complaintSchema = new mongoose.Schema(
       required: [true, 'Please provide an area or location'],
       trim: true,
     },
+    imageUrl: {
+      type: String,
+      default: '',
+      trim: true,
+    },
     status: {
       type: String,
       enum: {

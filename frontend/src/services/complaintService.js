@@ -35,7 +35,19 @@ export const complaintService = {
    * Create a new complaint (Citizen only)
    */
   async createComplaint(data) {
-    const response = await api.post('/complaints', data);
+    const formData = new FormData();
+
+    Object.entries(data).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) {
+        formData.append(key, value);
+      }
+    });
+
+    const response = await api.post('/complaints', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
     return response.data;
   },
 

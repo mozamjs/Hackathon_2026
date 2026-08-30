@@ -42,7 +42,7 @@ export const SignupPage = () => {
     setErrorMessage('');
     try {
       const user = await signup(name.trim(), email.trim(), password);
-      success(`Registration successful! Welcome to CivicFix, ${user.name}.`);
+      success(`Registration successful! Welcome to AwamDesk, ${user.name}.`);
       navigate('/dashboard', { replace: true });
     } catch (err) {
       const msg =

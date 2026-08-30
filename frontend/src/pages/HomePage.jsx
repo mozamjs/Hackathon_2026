@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ShieldCheck,
@@ -10,10 +10,6 @@ import {
   Trash2,
   Droplets,
   Zap,
-  FileText,
-  Users,
-  BriefcaseBusiness,
-  CircleCheckBig,
 } from 'lucide-react';
 import Button from '../components/common/Button';
 import ComplaintCard from '../components/complaints/ComplaintCard';
@@ -23,24 +19,56 @@ import useAuth from '../hooks/useAuth';
 
 export const HomePage = () => {
   const { isOfficer } = useAuth();
+  const [allComplaints, setAllComplaints] = useState([]);
   const [trendingComplaints, setTrendingComplaints] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchTopComplaints = async () => {
+    const fetchComplaints = async () => {
       try {
         const res = await complaintService.getComplaints({ sort: 'upvotes' });
-        if (res?.data) {
-          setTrendingComplaints(res.data.slice(0, 6));
-        }
+        const complaints = res?.data || [];
+        setAllComplaints(complaints);
+        setTrendingComplaints(complaints.slice(0, 6));
       } catch (err) {
         console.error('Failed to fetch home complaints:', err);
       } finally {
         setLoading(false);
       }
     };
-    fetchTopComplaints();
+    fetchComplaints();
   }, []);
+
+  const categoryOverview = useMemo(() => {
+    const counts = allComplaints.reduce((acc, complaint) => {
+      const category = complaint.category || 'other';
+      acc[category] = (acc[category] || 0) + 1;
+      return acc;
+    }, {});
+
+    const categoryLabels = {
+      road: 'Roads & Potholes',
+      garbage: 'Waste & Sanitation',
+      water: 'Water & Pipes',
+      electricity: 'Power & Lights',
+      other: 'Other Civic Issues',
+    };
+
+    const entries = Object.entries(counts).map(([category, count]) => ({
+      category,
+      label: categoryLabels[category] || 'Other Civic Issues',
+      count,
+    }));
+
+    const maxCount = entries.reduce((max, item) => Math.max(max, item.count), 0);
+
+    return entries
+      .sort((a, b) => b.count - a.count)
+      .map((item) => ({
+        ...item,
+        width: maxCount > 0 ? (item.count / maxCount) * 100 : 0,
+      }));
+  }, [allComplaints]);
 
   const categoriesPreview = [
     { id: 'road', name: 'Roads & Potholes', icon: Car },
@@ -91,32 +119,33 @@ export const HomePage = () => {
             <div className="w-full rounded-2xl border border-slate-200 bg-slate-50 p-6">
               <div className="mb-6 flex items-center justify-between gap-3 border-b border-slate-200 pb-4">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Service Snapshot</p>
-                  <h2 className="mt-1 text-xl font-semibold text-slate-900">Civic priorities</h2>
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Live overview</p>
+                  <h2 className="mt-1 text-xl font-semibold text-slate-900">Current complaint trends</h2>
                 </div>
-                <div className="rounded-full bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700">Updated today</div>
               </div>
-              <div className="space-y-4">
-                {[
-                  ['Road maintenance', '24 reports'],
-                  ['Water supply', '18 reports'],
-                  ['Waste collection', '12 reports'],
-                  ['Street lighting', '9 reports'],
-                ].map(([label, count], idx) => (
-                  <div key={label}>
-                    <div className="mb-1 flex items-center justify-between text-sm text-slate-600">
-                      <span>{label}</span>
-                      <span>{count}</span>
+
+              {allComplaints.length === 0 ? (
+                <div className="rounded-xl border border-dashed border-slate-300 bg-white p-5 text-center text-sm text-slate-600">
+                  No complaints have been submitted yet. Once residents report civic issues, live category data will appear here.
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {categoryOverview.map((item) => (
+                    <div key={item.category}>
+                      <div className="mb-1 flex items-center justify-between text-sm text-slate-600">
+                        <span>{item.label}</span>
+                        <span>{item.count} report{item.count === 1 ? '' : 's'}</span>
+                      </div>
+                      <div className="h-2 rounded-full bg-slate-200">
+                        <div
+                          className="h-2 rounded-full bg-primary-600"
+                          style={{ width: `${item.width}%` }}
+                        />
+                      </div>
                     </div>
-                    <div className="h-2 rounded-full bg-slate-200">
-                      <div
-                        className="h-2 rounded-full bg-primary-600"
-                        style={{ width: `${70 - idx * 10}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -187,7 +216,7 @@ export const HomePage = () => {
           <LoadingSpinner message="Loading community complaints..." />
         ) : trendingComplaints.length === 0 ? (
           <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-sm text-slate-500">
-            No complaints found right now.
+            No complaints submitted yet. Community issues will appear here as soon as residents report them.
           </div>
         ) : (
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
