@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Officer Dashboard - CitizenPortal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#86f2e4",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#773205",
+                        "secondary": "#006a61",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-fixed": "#89f5e7",
+                        "on-primary-fixed": "#00164e",
+                        "surface": "#f7f9fb",
+                        "on-primary-fixed-variant": "#264191",
+                        "on-surface": "#191c1e",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed": "#ffdbcb",
+                        "primary-fixed": "#dce1ff",
+                        "tertiary": "#4b1c00",
+                        "outline": "#757682",
+                        "on-tertiary-fixed": "#341100",
+                        "surface-container": "#eceef0",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#1e3a8a",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d8dadc",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#b6c4ff",
+                        "surface-variant": "#e0e3e5",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary-fixed": "#00201d",
+                        "primary": "#00236f",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary-container": "#90a8ff",
+                        "surface-tint": "#4059aa",
+                        "background": "#f7f9fb",
+                        "on-secondary-fixed-variant": "#005049",
+                        "on-secondary-container": "#006f66",
+                        "on-tertiary-container": "#f39461",
+                        "outline-variant": "#c5c5d3",
+                        "tertiary-container": "#6e2c00",
+                        "surface-container-low": "#f2f4f6",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "on-background": "#191c1e",
+                        "on-surface-variant": "#444651"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "gutter": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen">
+<!-- Shared Component: TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline fixed top-0 left-0 w-full z-50 flex justify-between items-center px-md lg:px-lg h-16 flat no shadows">
+<button class="text-primary dark:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors p-2 rounded-full lg:hidden flex items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed-dim">
+            CitizenPortal
+        </div>
+<button class="text-primary dark:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</header>
+<!-- Shared Component: NavigationDrawer (Desktop) -->
+<nav class="bg-surface-container-low dark:bg-surface-container-lowest shadow-md dark:shadow-none hidden lg:flex flex-col fixed left-0 top-0 h-full border-r border-outline-variant w-72 rounded-r-xl pt-16 z-40">
+<!-- Profile Header -->
+<div class="p-lg flex items-center gap-md border-b border-outline-variant">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A professional headshot of a public works officer wearing a crisp, dark blue municipal uniform. The lighting is bright and even, set against a clean, light-gray office background, conveying trust and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMS58roybZVf1dY76N9ROx1PLE0wx7pNIXnmZ5V2dQdPf1B1uFkLb1Smy3HCFSPz9yjTluWkd50ThuhXIT2OSjIAoWxJpCSu_7_Aunv0DcSS3G1MMhfyQmPANcQr2opIGlahikZyNv44OND8Q69D6k6PF2LIjs1tUnN-ru2hAJZcCtG7_60pbI3JIjUy8sBA4TIscVifVP9kQ4t48V2V_rvjFyiFU-v79sJrU6K_mJE_cdCKkY7rzp"/>
+<div>
+<div class="font-headline-sm text-headline-sm font-bold text-primary">Officer Name</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Department of Public Works</div>
+<div class="font-label-sm text-label-sm text-secondary mt-1">Admin Access</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 py-md flex flex-col gap-sm overflow-y-auto">
+<!-- Active: Dashboard -->
+<a class="bg-secondary-container text-on-secondary-container dark:bg-secondary dark:text-on-secondary rounded-full mx-2 px-4 py-3 flex items-center gap-md opacity-80 scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Inactive -->
+<a class="text-on-surface-variant dark:text-outline-variant mx-2 px-4 py-3 flex items-center gap-md hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-label-md text-label-md">Complaints</span>
+</a>
+<a class="text-on-surface-variant dark:text-outline-variant mx-2 px-4 py-3 flex items-center gap-md hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<a class="text-on-surface-variant dark:text-outline-variant mx-2 px-4 py-3 flex items-center gap-md hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-[64px] lg:pl-[288px] pb-[80px] lg:pb-0 min-h-screen max-w-container-max mx-auto w-full p-margin-mobile md:p-md lg:p-lg">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-md mb-xl mt-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Overview</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Monitor daily departmental activities and urgent reports.</p>
+</div>
+<button class="bg-surface-container-lowest border border-primary text-primary px-lg py-2 rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors shadow-sm flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                Download CSV
+            </button>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- AI Daily Briefing (Bento Style Card spanning full on mobile, 8 cols on desktop) -->
+<div class="lg:col-span-12 bg-surface-container-lowest rounded-xl p-lg shadow-[0px_1px_3px_rgba(15,23,42,0.1),_0px_1px_2px_rgba(15,23,42,0.06)] border border-outline-variant relative overflow-hidden flex flex-col md:flex-row gap-lg items-start md:items-center">
+<!-- Decorative background element for AI -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary-container opacity-20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+<div class="flex-shrink-0 bg-primary-container p-md rounded-lg flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-[32px]">psychiatry</span>
+</div>
+<div class="flex-1 z-10">
+<div class="flex items-center gap-sm mb-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">AI Daily Briefing</h2>
+<span class="bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm px-2 py-0.5 rounded-full">Updated 5m ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+                        The system has identified <strong class="text-error font-bold">2 high-priority water main breaks</strong> in District 4 that require immediate dispatch. Additionally, there is a 15% surge in pothole reports along Main St. following yesterday's storm.
+                    </p>
+<div class="flex flex-wrap gap-sm">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">Dispatch Crew to District 4</button>
+<button class="bg-transparent border border-outline text-on-surface px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors">View Storm Reports</button>
+</div>
+</div>
+</div>
+<!-- Stat Cards -->
+<div class="lg:col-span-4 bg-surface-container-lowest rounded-xl p-lg shadow-[0px_1px_3px_rgba(15,23,42,0.1),_0px_1px_2px_rgba(15,23,42,0.06)] border border-outline-variant flex flex-col justify-between">
+<div class="flex items-center gap-sm text-error mb-2">
+<span class="material-symbols-outlined">warning</span>
+<span class="font-label-md text-label-md">Pending</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-surface mt-2">24</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-error">trending_up</span>
+<span>+4 since yesterday</span>
+</div>
+</div>
+<div class="lg:col-span-4 bg-surface-container-lowest rounded-xl p-lg shadow-[0px_1px_3px_rgba(15,23,42,0.1),_0px_1px_2px_rgba(15,23,42,0.06)] border border-outline-variant flex flex-col justify-between">
+<div class="flex items-center gap-sm text-secondary mb-2">
+<span class="material-symbols-outlined">sync</span>
+<span class="font-label-md text-label-md">In Progress</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-surface mt-2">12</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">trending_flat</span>
+<span>Steady workload</span>
+</div>
+</div>
+<div class="lg:col-span-4 bg-surface-container-lowest rounded-xl p-lg shadow-[0px_1px_3px_rgba(15,23,42,0.1),_0px_1px_2px_rgba(15,23,42,0.06)] border border-outline-variant flex flex-col justify-between">
+<div class="flex items-center gap-sm text-primary mb-2">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-label-md text-label-md">Resolved</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-surface mt-2">150</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">trending_up</span>
+<span>+12 this week</span>
+</div>
+</div>
+<!-- Management Table (Mobile Optimized Cards) -->
+<div class="lg:col-span-12 mt-lg">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined">list_alt</span>
+                    Recent Complaints
+                </h3>
+<div class="flex flex-col gap-md">
+<!-- Row 1: High Priority -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_1px_3px_rgba(15,23,42,0.1),_0px_1px_2px_rgba(15,23,42,0.06)] border border-outline-variant flex flex-col sm:flex-row relative overflow-hidden group">
+<!-- Priority Color Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error"></div>
+<div class="p-md pl-lg flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface">#CMP-8942</span>
+<span class="bg-error-container text-on-error-container font-label-sm text-label-sm px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">priority_high</span> High
+                                    </span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Water Main Break</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> 1400 block of Elm St.
+                                </p>
+</div>
+<div class="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-4 sm:gap-2 border-t sm:border-t-0 border-outline-variant pt-4 sm:pt-0 mt-2 sm:mt-0">
+<span class="bg-surface-container-high text-on-surface font-label-sm text-label-sm px-3 py-1 rounded-full">Pending</span>
+<button class="bg-surface-container-lowest border border-primary text-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors">Update</button>
+</div>
+</div>
+</div>
+<!-- Row 2: Medium Priority -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_1px_3px_rgba(15,23,42,0.1),_0px_1px_2px_rgba(15,23,42,0.06)] border border-outline-variant flex flex-col sm:flex-row relative overflow-hidden group">
+<!-- Priority Color Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-tertiary-container"></div>
+<div class="p-md pl-lg flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface">#CMP-8941</span>
+<span class="bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">remove</span> Medium
+                                    </span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Large Pothole</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Intersection of 5th & Main
+                                </p>
+</div>
+<div class="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-4 sm:gap-2 border-t sm:border-t-0 border-outline-variant pt-4 sm:pt-0 mt-2 sm:mt-0">
+<span class="bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sync</span> In Progress
+                                </span>
+<button class="bg-surface-container-lowest border border-primary text-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors">Update</button>
+</div>
+</div>
+</div>
+<!-- Row 3: Low Priority -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_1px_3px_rgba(15,23,42,0.1),_0px_1px_2px_rgba(15,23,42,0.06)] border border-outline-variant flex flex-col sm:flex-row relative overflow-hidden group">
+<!-- Priority Color Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-outline-variant"></div>
+<div class="p-md pl-lg flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface">#CMP-8940</span>
+<span class="bg-surface-container-high text-on-surface font-label-sm text-label-sm px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span> Low
+                                    </span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Overgrown Foliage</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Centennial Park North Entrance
+                                </p>
+</div>
+<div class="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-4 sm:gap-2 border-t sm:border-t-0 border-outline-variant pt-4 sm:pt-0 mt-2 sm:mt-0">
+<span class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check</span> Resolved
+                                </span>
+<button class="bg-surface-container-lowest border border-outline text-on-surface px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors">Review</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Shared Component: BottomNavBar (Mobile) -->
+<nav class="bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-none shadow-sm dark:shadow-lg lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe">
+<!-- Active: Home (Dashboard intent) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container dark:bg-primary-fixed-dim dark:text-on-primary-fixed rounded-2xl px-4 py-1.5 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors scale-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<!-- Inactive -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1.5 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-sm text-label-sm mt-1">My Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1.5 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-sm text-label-sm mt-1">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1.5 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

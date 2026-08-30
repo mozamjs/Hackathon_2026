@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CitizenPortal - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#86f2e4",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#773205",
+                        "secondary": "#006a61",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-fixed": "#89f5e7",
+                        "on-primary-fixed": "#00164e",
+                        "surface": "#f7f9fb",
+                        "on-primary-fixed-variant": "#264191",
+                        "on-surface": "#191c1e",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed": "#ffdbcb",
+                        "primary-fixed": "#dce1ff",
+                        "tertiary": "#4b1c00",
+                        "outline": "#757682",
+                        "on-tertiary-fixed": "#341100",
+                        "surface-container": "#eceef0",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#1e3a8a",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d8dadc",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#b6c4ff",
+                        "surface-variant": "#e0e3e5",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary-fixed": "#00201d",
+                        "primary": "#00236f",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary-container": "#90a8ff",
+                        "surface-tint": "#4059aa",
+                        "background": "#f7f9fb",
+                        "on-secondary-fixed-variant": "#005049",
+                        "on-secondary-container": "#006f66",
+                        "on-tertiary-container": "#f39461",
+                        "outline-variant": "#c5c5d3",
+                        "tertiary-container": "#6e2c00",
+                        "surface-container-low": "#f2f4f6",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "on-background": "#191c1e",
+                        "on-surface-variant": "#444651"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "gutter": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .card-shadow {
+            box-shadow: 0px 1px 3px rgba(15, 23, 42, 0.1), 0px 1px 2px rgba(15, 23, 42, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-surface min-h-screen flex items-center justify-center p-margin-mobile md:p-lg antialiased">
+<!-- Main Container -->
+<main class="w-full max-w-md">
+<!-- Login Card -->
+<div class="bg-surface-container-lowest rounded-[16px] p-lg md:p-xl card-shadow border border-outline-variant/30">
+<!-- Header -->
+<div class="text-center mb-xl">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-container text-on-primary-container mb-4">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">assured_workload</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary md:hidden font-headline-lg-mobile text-headline-lg-mobile mb-2">CitizenPortal</h1>
+<h1 class="font-headline-lg text-headline-lg text-primary hidden md:block mb-2">CitizenPortal</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Welcome Back. Please sign in to continue.</p>
+</div>
+<!-- Form -->
+<form action="#" class="space-y-md" method="POST">
+<!-- Email Field -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-sm" for="email">Email Address</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">mail</span>
+</div>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-surface outline-none transition-all" id="email" name="email" placeholder="Enter your email" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div>
+<div class="flex justify-between items-center mb-sm">
+<label class="block font-label-md text-label-md text-on-surface" for="password">Password</label>
+<a class="font-label-sm text-label-sm text-primary hover:text-primary-container transition-colors" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">lock</span>
+</div>
+<input class="w-full pl-10 pr-10 py-3 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-surface outline-none transition-all" id="password" name="password" placeholder="Enter your password" required="" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-3 flex items-center text-outline hover:text-on-surface transition-colors" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined" id="visibility-icon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-sm">
+<button class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm font-label-md text-label-md text-on-primary bg-primary-container hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-container transition-all h-[44px]" type="submit">
+                        Sign In
+                    </button>
+</div>
+</form>
+<!-- Footer Link -->
+<div class="mt-xl text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Don't have an account? 
+                    <a class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors ml-1" href="#">Sign Up</a>
+</p>
+</div>
+</div>
+<!-- Government Security Notice (Optional but adds institutional feel) -->
+<div class="mt-md text-center flex items-center justify-center text-on-surface-variant space-x-2">
+<span class="material-symbols-outlined text-sm">security</span>
+<p class="font-body-sm text-body-sm">Secure Official Portal</p>
+</div>
+</main>
+<script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const visibilityIcon = document.getElementById('visibility-icon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                visibilityIcon.textContent = 'visibility_off';
+            } else {
+                passwordInput.type = 'password';
+                visibilityIcon.textContent = 'visibility';
+            }
+        }
+    </script>
+</body></html>

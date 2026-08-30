@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Reports - CitizenPortal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#86f2e4",
+                      "on-secondary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed-variant": "#773205",
+                      "secondary": "#006a61",
+                      "surface-container-highest": "#e0e3e5",
+                      "secondary-fixed": "#89f5e7",
+                      "on-primary-fixed": "#00164e",
+                      "surface": "#f7f9fb",
+                      "on-primary-fixed-variant": "#264191",
+                      "on-surface": "#191c1e",
+                      "tertiary-fixed-dim": "#ffb691",
+                      "inverse-surface": "#2d3133",
+                      "tertiary-fixed": "#ffdbcb",
+                      "primary-fixed": "#dce1ff",
+                      "tertiary": "#4b1c00",
+                      "outline": "#757682",
+                      "on-tertiary-fixed": "#341100",
+                      "surface-container": "#eceef0",
+                      "on-primary": "#ffffff",
+                      "primary-container": "#1e3a8a",
+                      "error": "#ba1a1a",
+                      "surface-dim": "#d8dadc",
+                      "surface-container-high": "#e6e8ea",
+                      "on-tertiary": "#ffffff",
+                      "inverse-primary": "#b6c4ff",
+                      "surface-variant": "#e0e3e5",
+                      "surface-bright": "#f7f9fb",
+                      "on-secondary-fixed": "#00201d",
+                      "primary": "#00236f",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-primary-container": "#90a8ff",
+                      "surface-tint": "#4059aa",
+                      "background": "#f7f9fb",
+                      "on-secondary-fixed-variant": "#005049",
+                      "on-secondary-container": "#006f66",
+                      "on-tertiary-container": "#f39461",
+                      "outline-variant": "#c5c5d3",
+                      "tertiary-container": "#6e2c00",
+                      "surface-container-low": "#f2f4f6",
+                      "on-error": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "primary-fixed-dim": "#b6c4ff",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed-dim": "#6bd8cb",
+                      "on-background": "#191c1e",
+                      "on-surface-variant": "#444651"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "base": "4px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "xl": "32px",
+                      "gutter": "24px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .subtle-shadow {
+            box-shadow: 0px 1px 3px rgba(15, 23, 42, 0.1), 0px 1px 2px rgba(15, 23, 42, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-full font-body-md antialiased pt-16 pb-20 lg:pb-0 lg:pl-72">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-md lg:px-lg h-16 bg-surface dark:bg-surface-dim text-primary dark:text-inverse-primary border-b border-outline-variant dark:border-outline flat no shadows">
+<div class="flex items-center gap-4">
+<button class="lg:hidden p-2 -ml-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed-dim hidden md:block">CitizenPortal</h1>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim md:hidden">CitizenPortal</h1>
+</div>
+<!-- Search Bar in Header for larger screens -->
+<div class="hidden md:flex flex-1 max-w-md mx-8 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-highest border-none rounded-full py-2 pl-10 pr-4 font-body-sm text-body-sm focus:ring-2 focus:ring-primary-container outline-none transition-all placeholder:text-outline-variant text-on-surface" placeholder="Search reports..." type="text"/>
+</div>
+<button class="p-2 -mr-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</header>
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden lg:flex flex-col fixed left-0 top-0 h-full border-r border-outline-variant bg-surface-container-low dark:bg-surface-container-lowest shadow-md dark:shadow-none w-72 rounded-r-xl z-40 pt-16">
+<div class="p-lg border-b border-outline-variant flex items-center gap-4">
+<img alt="Officer Profile Photo" class="w-12 h-12 rounded-full object-cover bg-surface-container-highest" data-alt="A professional headshot of a public works officer wearing a neat uniform with a subtle department badge. Soft, flat studio lighting against a clean, light gray background. The mood is approachable and civic-minded, fitting a modern government portal aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOPN-Jz09jNtzyT1gN4F8yDM2IdFlz7PR2CISmhzHe-_waAbS9HtEc12clmfEy9llgp4RgtY_bYifdSFxOamRwCqW8FfttqXcCbuI6FoLiZkObE5swYnbwQkmXzp4vc583UI5tXVBK9EL4hTGarBKLYH7S5VEUqSUfhD1KYWoDDQZY8WI8NVHMmu1ofe4b1ZO2Fb5wkfz1jd_HhvX09Jx8C9ybF6YsbRzCjYNcCjOOuYiIoibqXXVY"/>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">Officer Name</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Department of Public Works</span>
+<span class="font-label-sm text-label-sm text-outline mt-1 uppercase tracking-wide">Admin Access</span>
+</div>
+</div>
+<div class="flex-1 py-4 overflow-y-auto flex flex-col gap-2">
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-outline-variant mx-2 px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-outline-variant mx-2 px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-md text-label-md">Complaints</span>
+</a>
+<a class="flex items-center gap-4 bg-secondary-container text-on-secondary-container dark:bg-secondary dark:text-on-secondary rounded-full mx-2 px-4 py-3 opacity-80 scale-95 transition-transform font-bold" href="#">
+<span class="material-symbols-outlined icon-filled" data-icon="analytics">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-outline-variant mx-2 px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="max-w-[1280px] mx-auto px-margin-mobile md:px-gutter py-lg">
+<!-- Mobile Search Header -->
+<div class="md:hidden mb-md">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface mb-sm">My Reports</h2>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface border border-outline-variant rounded-lg py-3 pl-10 pr-4 font-body-md text-body-md focus:border-primary-container focus:ring-2 focus:ring-primary-container focus:ring-opacity-20 outline-none transition-all placeholder:text-outline-variant text-on-surface" placeholder="Search reports..." type="text"/>
+</div>
+</div>
+<!-- Desktop Header Title (Search is in TopAppBar) -->
+<div class="hidden md:flex justify-between items-end mb-lg">
+<div>
+<h2 class="font-display-lg text-display-lg font-bold text-on-surface">My Reports</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Track the status of your submitted civic issues.</p>
+</div>
+<button class="bg-primary-container text-on-primary-container hover:opacity-90 font-label-md text-label-md px-6 py-3 rounded-full flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined">add</span>
+                New Report
+            </button>
+</div>
+<!-- Bento Grid Layout for Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md lg:gap-lg">
+<!-- Card 1: In Progress -->
+<div class="bg-surface-container-lowest rounded-xl subtle-shadow p-lg flex flex-col hover:-translate-y-1 transition-transform duration-200 border border-transparent hover:border-outline-variant group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-surface-container-highest p-3 rounded-lg text-on-surface">
+<span class="material-symbols-outlined icon-filled text-3xl">maps_ar</span>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                            In Review
+                        </span>
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm">priority_high</span>
+                            Medium
+                        </span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 line-clamp-1">Deep Pothole on Elm St.</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 line-clamp-2 flex-grow">Large pothole forming near the intersection, causing traffic to swerve dangerously. Needs urgent patching.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-surface-variant">
+<span class="font-label-sm text-label-sm text-outline">Filed: Oct 24, 2023</span>
+<a class="font-label-md text-label-md text-primary-container group-hover:text-primary hover:underline flex items-center gap-1 transition-colors" href="#">
+                        View Details
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 2: Resolved -->
+<div class="bg-surface-container-lowest rounded-xl subtle-shadow p-lg flex flex-col hover:-translate-y-1 transition-transform duration-200 border border-transparent hover:border-outline-variant group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-surface-container-highest p-3 rounded-lg text-on-surface">
+<span class="material-symbols-outlined icon-filled text-3xl">lightbulb</span>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+                            Resolved
+                        </span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 line-clamp-1">Broken Streetlight</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 line-clamp-2 flex-grow">Streetlight outside 124 Maple Ave has been flickering and is now completely out. Area is very dark at night.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-surface-variant">
+<span class="font-label-sm text-label-sm text-outline">Filed: Sep 15, 2023</span>
+<a class="font-label-md text-label-md text-primary-container group-hover:text-primary hover:underline flex items-center gap-1 transition-colors" href="#">
+                        View Details
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 3: Received -->
+<div class="bg-surface-container-lowest rounded-xl subtle-shadow p-lg flex flex-col hover:-translate-y-1 transition-transform duration-200 border border-transparent hover:border-outline-variant group relative overflow-hidden">
+<!-- Subtle accent gradient for new/received state -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-tertiary-fixed-dim/20 to-transparent rounded-bl-full pointer-events-none"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div class="bg-surface-container-highest p-3 rounded-lg text-on-surface">
+<span class="material-symbols-outlined icon-filled text-3xl">delete</span>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                            Received
+                        </span>
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm text-tertiary">warning</span>
+                            Low
+                        </span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 line-clamp-1 relative z-10">Missed Trash Pickup</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 line-clamp-2 flex-grow relative z-10">Entire block of Oak Street was skipped during regular Tuesday trash collection. Bins are overflowing.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-surface-variant relative z-10">
+<span class="font-label-sm text-label-sm text-outline">Filed: Today</span>
+<a class="font-label-md text-label-md text-primary-container group-hover:text-primary hover:underline flex items-center gap-1 transition-colors" href="#">
+                        View Details
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 4: Action Required (Error state example) -->
+<div class="bg-surface-container-lowest rounded-xl subtle-shadow p-lg flex flex-col hover:-translate-y-1 transition-transform duration-200 border border-error-container group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-error-container text-on-error-container p-3 rounded-lg">
+<span class="material-symbols-outlined icon-filled text-3xl">report</span>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">
+                            Action Required
+                        </span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 line-clamp-1">Graffiti on Park Wall</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 line-clamp-2 flex-grow">We need more information regarding the exact location within Centennial Park to proceed with cleanup.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-surface-variant">
+<span class="font-label-sm text-label-sm text-outline">Filed: Oct 10, 2023</span>
+<a class="font-label-md text-label-md text-error group-hover:text-error/80 hover:underline flex items-center gap-1 transition-colors" href="#">
+                        Provide Info
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More (Contextual) -->
+<div class="mt-xl flex justify-center">
+<button class="font-label-md text-label-md text-primary-container border border-outline-variant px-6 py-2 rounded-full hover:bg-surface-container-low transition-colors">
+                Load More Reports
+            </button>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-none shadow-sm dark:shadow-lg text-primary dark:text-inverse-primary docked full-width">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1.5 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container dark:bg-primary-fixed-dim dark:text-on-primary-fixed rounded-2xl px-4 py-1.5 scale-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined icon-filled text-[24px]" data-icon="description">description</span>
+<span class="font-label-sm text-label-sm mt-1">My Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1.5 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-xl transition-colors relative" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-4 w-2 h-2 bg-error rounded-full"></span>
+<span class="font-label-sm text-label-sm mt-1">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1.5 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</nav>
+<!-- FAB (Floating Action Button) - Mobile Only, for primary action -->
+<button class="md:hidden fixed bottom-24 right-4 z-40 bg-primary-container text-on-primary-container w-14 h-14 rounded-2xl shadow-lg flex items-center justify-center hover:scale-105 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-3xl icon-filled">add</span>
+</button>
+</body></html>

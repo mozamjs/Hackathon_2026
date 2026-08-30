@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Report a Civic Issue - CitizenPortal</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#86f2e4",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#773205",
+                    "secondary": "#006a61",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary-fixed": "#89f5e7",
+                    "on-primary-fixed": "#00164e",
+                    "surface": "#f7f9fb",
+                    "on-primary-fixed-variant": "#264191",
+                    "on-surface": "#191c1e",
+                    "tertiary-fixed-dim": "#ffb691",
+                    "inverse-surface": "#2d3133",
+                    "tertiary-fixed": "#ffdbcb",
+                    "primary-fixed": "#dce1ff",
+                    "tertiary": "#4b1c00",
+                    "outline": "#757682",
+                    "on-tertiary-fixed": "#341100",
+                    "surface-container": "#eceef0",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#1e3a8a",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#d8dadc",
+                    "surface-container-high": "#e6e8ea",
+                    "on-tertiary": "#ffffff",
+                    "inverse-primary": "#b6c4ff",
+                    "surface-variant": "#e0e3e5",
+                    "surface-bright": "#f7f9fb",
+                    "on-secondary-fixed": "#00201d",
+                    "primary": "#00236f",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-primary-container": "#90a8ff",
+                    "surface-tint": "#4059aa",
+                    "background": "#f7f9fb",
+                    "on-secondary-fixed-variant": "#005049",
+                    "on-secondary-container": "#006f66",
+                    "on-tertiary-container": "#f39461",
+                    "outline-variant": "#c5c5d3",
+                    "tertiary-container": "#6e2c00",
+                    "surface-container-low": "#f2f4f6",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#b6c4ff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#6bd8cb",
+                    "on-background": "#191c1e",
+                    "on-surface-variant": "#444651"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "gutter": "24px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f7f9fb; }
+        ::-webkit-scrollbar-thumb { background: #c5c5d3; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #757682; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-surface text-primary border-b border-outline-variant flat no shadows fixed top-0 left-0 w-full z-50 flex justify-between items-center px-md lg:px-lg h-16 transition-colors">
+<div class="flex items-center gap-md">
+<button class="lg:hidden p-2 -ml-2 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-tight">CitizenPortal</h1>
+</div>
+<div class="flex items-center">
+<button class="p-2 -mr-2 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- NavigationDrawer (Desktop) -->
+<nav class="bg-surface-container-low text-primary hidden lg:flex flex-col fixed left-0 top-0 h-full w-72 rounded-r-xl border-r border-outline-variant pt-16 shadow-md z-40 transition-transform">
+<div class="p-lg border-b border-outline-variant/50">
+<div class="flex items-center gap-md mb-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary-fixed-dim overflow-hidden border border-outline-variant">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-primary">Officer Name</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Department of Public Works</p>
+</div>
+</div>
+<span class="inline-block px-3 py-1 bg-surface-container-high rounded-full font-label-sm text-label-sm text-on-surface-variant">Admin Access</span>
+</div>
+<div class="flex-1 py-md overflow-y-auto flex flex-col gap-sm">
+<a class="flex items-center gap-md text-on-surface-variant mx-2 px-4 py-3 rounded-full hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Active State: Complaints -->
+<a class="flex items-center gap-md bg-secondary-container text-on-secondary-container mx-2 px-4 py-3 rounded-full translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="assignment" data-weight="fill" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span class="font-label-md text-label-md font-bold">Complaints</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant mx-2 px-4 py-3 rounded-full hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant mx-2 px-4 py-3 rounded-full hover:bg-surface-container-high transition-colors mt-auto" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 pt-20 pb-28 lg:pl-72 lg:pb-12 px-md lg:px-xl flex justify-center">
+<div class="w-full max-w-[800px] animate-fade-in-up">
+<!-- Page Header -->
+<div class="mb-lg lg:mb-xl">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile lg:font-headline-lg lg:text-headline-lg text-on-surface mb-2">Report a Civic Issue</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Please provide details about the issue to help us resolve it quickly.</p>
+</div>
+<!-- Warning Card -->
+<div class="bg-tertiary-fixed border border-tertiary-fixed-dim rounded-xl p-md mb-lg flex items-start gap-md shadow-sm">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant mt-0.5" data-icon="warning">warning</span>
+<div>
+<h3 class="font-label-md text-label-md text-on-tertiary-fixed-variant mb-1">Check for duplicates</h3>
+<p class="font-body-sm text-body-sm text-on-tertiary-fixed-variant/90">Before submitting, please check if this is a duplicate issue already reported in your area.</p>
+</div>
+</div>
+<!-- Form Card -->
+<form class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-md lg:p-xl space-y-lg relative overflow-hidden">
+<!-- Subtle Top Highlight -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-primary opacity-50"></div>
+<!-- Title Field -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-sm" for="issue-title">Title</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface placeholder:text-outline focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-shadow" id="issue-title" name="issue-title" placeholder="e.g., Deep pothole on Main St" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Category Dropdown -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-sm" for="issue-category">Category</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-lowest border border-outline-variant rounded-lg pl-4 pr-10 py-3 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-shadow cursor-pointer" id="issue-category" name="issue-category">
+<option disabled="" selected="" value="">Select a category</option>
+<option value="infrastructure">Infrastructure & Roads</option>
+<option value="utilities">Water & Utilities</option>
+<option value="waste">Waste Management</option>
+<option value="parks">Parks & Public Spaces</option>
+<option value="other">Other</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Area/Locality -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-sm" for="issue-location">Area/Locality</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="location_on">location_on</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg pl-10 pr-4 py-3 font-body-md text-body-md text-on-surface placeholder:text-outline focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-shadow" id="issue-location" name="issue-location" placeholder="Search location or drop pin" type="text"/>
+</div>
+</div>
+</div>
+<!-- Description Field -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-sm" for="issue-description">Description</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface placeholder:text-outline focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-shadow resize-y" id="issue-description" name="issue-description" placeholder="Provide specific details about the issue..." rows="4"></textarea>
+</div>
+<!-- Upload Area -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-sm">Add Photo/Evidence</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-xl text-center bg-surface-container-low hover:bg-surface-container-high transition-colors cursor-pointer group flex flex-col items-center justify-center gap-sm">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="add_photo_alternate">add_photo_alternate</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Click to upload or drag and drop</p>
+<p class="font-body-sm text-body-sm text-outline mt-1">SVG, PNG, JPG or GIF (max. 10MB)</p>
+</div>
+</div>
+</div>
+<!-- Divider -->
+<hr class="border-outline-variant my-lg"/>
+<!-- Actions -->
+<div class="flex flex-col-reverse sm:flex-row justify-end gap-md">
+<button class="px-6 py-3 rounded-full font-label-md text-label-md text-primary hover:bg-surface-container-high transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" type="button">
+                        Cancel
+                    </button>
+<button class="bg-secondary text-on-secondary hover:bg-on-secondary-fixed-variant px-8 py-3 rounded-full font-label-md text-label-md shadow-sm transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 active:scale-95" type="submit">
+<span class="material-symbols-outlined text-[20px]" data-icon="send">send</span>
+                        Submit Complaint
+                    </button>
+</div>
+</form>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="bg-surface-container-lowest text-primary lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe border-t border-outline-variant shadow-sm transition-colors">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<!-- Active State: My Reports -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-2xl px-4 py-1.5 scale-90 transition-all duration-150 relative" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="description" data-weight="fill" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="font-label-sm text-label-sm font-bold">My Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 hover:bg-surface-container-high rounded-xl transition-colors relative" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="notifications">notifications</span>
+<span class="font-label-sm text-label-sm">Alerts</span>
+<!-- Notification Badge -->
+<span class="absolute top-1.5 right-4 w-2 h-2 bg-error rounded-full"></span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+</body></html>
