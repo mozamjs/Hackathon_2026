@@ -30,25 +30,25 @@ export const AiBriefingCard = () => {
   };
 
   return (
-    <div className="glass-card rounded-2xl p-6 border border-brand-500/30 bg-gradient-to-br from-slate-900 via-slate-900 to-brand-950/40 relative overflow-hidden shadow-2xl shadow-brand-950/50">
+    <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
       {/* Ambient background glow */}
       <div className="absolute -right-16 -top-16 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800 relative">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-brand-500/25">
-            <Bot className="w-6 h-6" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-100 text-primary-700">
+            <Bot className="h-6 w-6" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-base sm:text-lg font-bold text-slate-100">
+              <h3 className="text-base font-semibold text-slate-900 sm:text-lg">
                 Gemini AI Operational Briefing
               </h3>
-              <span className="text-[10px] font-bold uppercase tracking-wider bg-brand-500/20 text-brand-300 px-2 py-0.5 rounded-full border border-brand-500/30">
+              <span className="rounded-full border border-primary-200 bg-primary-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-primary-700">
                 Live Analysis
               </span>
             </div>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-500">
               Aggregated operational insights without citizen PII
             </p>
           </div>
@@ -68,8 +68,8 @@ export const AiBriefingCard = () => {
       <div className="pt-5 relative">
         {loading && (
           <div className="flex flex-col items-center justify-center p-8 gap-3">
-            <RefreshCw className="w-8 h-8 text-brand-400 animate-spin" />
-            <p className="text-sm font-medium text-slate-300">
+            <RefreshCw className="h-8 w-8 animate-spin text-primary-600" />
+            <p className="text-sm font-medium text-slate-700">
               Analyzing municipal telemetry with Gemini AI...
             </p>
             <p className="text-xs text-slate-500">Synthesizing high priority areas and dispatch bottlenecks</p>
@@ -77,10 +77,10 @@ export const AiBriefingCard = () => {
         )}
 
         {!loading && !briefing && (
-          <div className="flex flex-col items-center justify-center text-center p-8 border border-dashed border-slate-800 rounded-xl bg-slate-950/40">
-            <Sparkles className="w-10 h-10 text-brand-400 mb-2 opacity-80" />
-            <h4 className="text-sm font-bold text-slate-200">Daily Executive Summary</h4>
-            <p className="text-xs text-slate-400 max-w-md mt-1 mb-4">
+          <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center">
+            <Sparkles className="mb-2 h-10 w-10 text-primary-600 opacity-80" />
+            <h4 className="text-sm font-semibold text-slate-800">Daily Executive Summary</h4>
+            <p className="mt-1 mb-4 max-w-md text-xs text-slate-600">
               Click the button above to generate a 3-5 sentence intelligent synthesis of active city bottlenecks, high-priority clusters, and resolution velocity.
             </p>
             <Button
@@ -96,13 +96,13 @@ export const AiBriefingCard = () => {
 
         {!loading && briefing && (
           <div className="space-y-4 animate-in fade-in duration-300">
-            <div className="p-4 rounded-xl bg-slate-950/80 border border-brand-500/20 text-sm text-slate-200 leading-relaxed whitespace-pre-line font-normal">
+            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm leading-relaxed whitespace-pre-line text-slate-700">
               {briefing}
             </div>
 
-            <div className="flex items-center justify-between text-xs text-slate-400 pt-1">
-              <span className="flex items-center gap-1.5 text-emerald-400">
-                <CheckCircle className="w-3.5 h-3.5" />
+            <div className="flex items-center justify-between pt-1 text-xs text-slate-500">
+              <span className="flex items-center gap-1.5 text-emerald-700">
+                <CheckCircle className="h-3.5 w-3.5" />
                 <span>Computed from latest live database telemetry</span>
               </span>
               {generatedAt && (

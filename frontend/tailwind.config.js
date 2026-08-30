@@ -2,122 +2,95 @@
 export default {
   darkMode: 'class',
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       colors: {
-        // ── Stitch CivicConnect Design System ──
         primary: {
-          DEFAULT: '#00236f',
-          container: '#dce1ff',
-          'fixed-dim': '#b6c4ff',
-        },
-        'on-primary': {
-          DEFAULT: '#ffffff',
-          container: '#001452',
+          DEFAULT: '#1d4ed8',
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
         },
         secondary: {
-          DEFAULT: '#006a61',
-          container: '#86f2e4',
+          DEFAULT: '#0f766e',
+          50: '#f0fdfa',
+          100: '#ccfbf1',
+          200: '#99f6e4',
+          300: '#5eead4',
+          400: '#2dd4bf',
+          500: '#14b8a6',
+          600: '#0f766e',
+          700: '#115e59',
         },
-        'on-secondary': {
-          DEFAULT: '#ffffff',
-          container: '#00201d',
-        },
-        tertiary: {
-          DEFAULT: '#6b3a2a',
-          container: '#ffdbcb',
-        },
-        'on-tertiary': {
-          DEFAULT: '#ffffff',
-          container: '#341100',
-        },
-        error: {
-          DEFAULT: '#ba1a1a',
-          container: '#ffdad6',
-        },
-        'on-error': {
-          DEFAULT: '#ffffff',
-          container: '#93000a',
-        },
-
-        // ── Surface System ──
-        surface: {
-          DEFAULT: '#f7f9fb',
-          dim: '#d8dadc',
-          bright: '#f7f9fb',
-          variant: '#e0e3e5',
-        },
-        'surface-container': {
-          lowest: '#ffffff',
-          low: '#f2f4f6',
-          DEFAULT: '#eceef0',
-          high: '#e6e8ea',
-          highest: '#e0e3e5',
-        },
-        'on-surface': {
-          DEFAULT: '#191c1e',
-          variant: '#444651',
-        },
-        'inverse-surface': { DEFAULT: '#2d3133' },
-        'inverse-on-surface': { DEFAULT: '#eff1f3' },
-        'inverse-primary': { DEFAULT: '#b6c4ff' },
-
-        // ── Outline ──
-        outline: {
-          DEFAULT: '#757682',
-          variant: '#c5c5d3',
-        },
-
-        // ── Global aliases ──
-        background: '#f7f9fb',
-        'on-background': '#191c1e',
-
-        // ── Legacy brand alias (maps to primary) ──
         brand: {
-          300: '#90a8ff',
-          400: '#b6c4ff',
-          500: '#4059aa',
-          600: '#00236f',
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#1d4ed8',
+          700: '#1e40af',
+        },
+        slate: {
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
+        },
+        success: {
+          50: '#ecfdf5',
+          100: '#d1fae5',
+          600: '#15803d',
+          700: '#166534',
+        },
+        warning: {
+          50: '#fffbeb',
+          100: '#fef3c7',
+          600: '#b45309',
+          700: '#92400e',
+        },
+        danger: {
+          50: '#fef2f2',
+          100: '#fee2e2',
+          500: '#ef4444',
+          600: '#dc2626',
+          700: '#b91c1c',
         },
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        inter: ['Inter', 'sans-serif'],
-        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       boxShadow: {
-        card: '0 1px 3px rgba(15,23,42,0.08), 0 1px 2px rgba(15,23,42,0.04)',
-        'card-hover': '0 4px 12px rgba(15,23,42,0.08), 0 1px 3px rgba(15,23,42,0.06)',
-        overlay: '0 10px 25px -5px rgba(15,23,42,0.14), 0 4px 10px -2px rgba(15,23,42,0.08)',
+        card: '0 1px 2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.06)',
+        soft: '0 8px 24px rgba(15, 23, 42, 0.08)',
       },
       borderRadius: {
-        sm: '0.375rem',
-        md: '0.5rem',
-        lg: '0.625rem',
-        xl: '0.75rem',
+        xl: '0.875rem',
         '2xl': '1rem',
-      },
-      spacing: {
-        gutter: '24px',
-        'gutter-sm': '16px',
-      },
-      maxWidth: {
-        content: '1280px',
+        '3xl': '1.25rem',
       },
       animation: {
         'spin-slow': 'spin 3s linear infinite',
-        'fade-in': 'fadeIn 0.2s ease-out',
-      },
-      keyframes: {
-        fadeIn: {
-          from: { opacity: '0', transform: 'translateY(6px)' },
-          to:   { opacity: '1', transform: 'translateY(0)' },
-        },
       },
     },
   },
   plugins: [],
-}
+};

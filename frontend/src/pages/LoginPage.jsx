@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { ShieldCheck, Mail, Lock, LogIn, Sparkles, User, ShieldAlert } from 'lucide-react';
+import { ShieldCheck, Mail, Lock, LogIn, ShieldAlert } from 'lucide-react';
 import Input from '../components/common/Input';
 import Button from '../components/common/Button';
 import useAuth from '../hooks/useAuth';
 import useToast from '../hooks/useToast';
-import { DEMO_USERS } from '../utils/constants';
 
 export const LoginPage = () => {
   const { login } = useAuth();
@@ -50,70 +49,24 @@ export const LoginPage = () => {
     }
   };
 
-  const handleDemoLogin = (demo) => {
-    setEmail(demo.email);
-    setPassword(demo.password);
-    setErrorMessage('');
-  };
-
   return (
-    <div className="max-w-md mx-auto py-8">
-      <div className="glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-2xl">
+    <div className="mx-auto max-w-md py-8">
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-card sm:p-8">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-600 flex items-center justify-center text-white mx-auto mb-3 shadow-lg shadow-brand-500/25">
-            <ShieldCheck className="w-7 h-7" />
+        <div className="mb-8 text-center">
+          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-white shadow-sm">
+            <ShieldCheck className="h-7 w-7" />
           </div>
-          <h1 className="text-2xl font-black text-slate-100 font-sans">Sign In to CivicFix</h1>
-          <p className="text-xs text-slate-400 mt-1">
-            Access your citizen reports or municipal officer dashboard
+          <h1 className="text-2xl font-semibold text-slate-900">Sign in to CivicFix</h1>
+          <p className="mt-1 text-sm text-slate-600">
+            Access your citizen reports or municipal officer dashboard.
           </p>
-        </div>
-
-        {/* Quick Demo Accounts Selection */}
-        <div className="mb-6 p-4 rounded-2xl bg-slate-900/90 border border-slate-800">
-          <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-300 mb-2.5">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Quick Demo Accounts (1-Click)</span>
-          </div>
-          <div className="grid grid-cols-1 gap-2">
-            {DEMO_USERS.map((demo) => {
-              const isOfficer = demo.role === 'officer';
-              return (
-                <button
-                  key={demo.email}
-                  type="button"
-                  onClick={() => handleDemoLogin(demo)}
-                  className="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/70 hover:bg-slate-800/80 border border-slate-800 hover:border-slate-700 transition-all text-left group"
-                >
-                  <div className="flex items-center gap-2.5">
-                    <span className="text-base">{isOfficer ? '👮' : '👤'}</span>
-                    <div>
-                      <div className="text-xs font-bold text-slate-200 group-hover:text-white">
-                        {demo.name}
-                      </div>
-                      <div className="text-[10px] text-slate-400">{demo.email}</div>
-                    </div>
-                  </div>
-                  <span
-                    className={`text-[10px] font-bold px-2 py-0.5 rounded border ${
-                      isOfficer
-                        ? 'bg-amber-500/15 text-amber-300 border-amber-500/30'
-                        : 'bg-brand-500/15 text-brand-300 border-brand-500/30'
-                    }`}
-                  >
-                    {demo.tag}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
         </div>
 
         {/* Error Alert */}
         {errorMessage && (
-          <div className="mb-6 p-3.5 rounded-xl bg-rose-950/80 border border-rose-500/40 text-rose-200 text-xs flex items-center gap-2">
-            <ShieldAlert className="w-4 h-4 text-rose-400 flex-shrink-0" />
+          <div className="mb-6 flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 p-3.5 text-sm text-red-700">
+            <ShieldAlert className="h-4 w-4 flex-shrink-0 text-red-500" />
             <span>{errorMessage}</span>
           </div>
         )}
@@ -146,16 +99,16 @@ export const LoginPage = () => {
             size="lg"
             loading={loading}
             icon={LogIn}
-            className="w-full mt-2"
+            className="mt-2 w-full"
           >
             Sign In
           </Button>
         </form>
 
         {/* Register Prompt */}
-        <div className="text-center mt-6 pt-6 border-t border-slate-800 text-xs text-slate-400">
+        <div className="mt-6 border-t border-slate-200 pt-6 text-center text-sm text-slate-600">
           Don't have an account?{' '}
-          <Link to="/signup" className="text-brand-400 hover:text-brand-300 font-semibold underline">
+          <Link to="/signup" className="font-semibold text-primary-700 underline-offset-2 hover:underline">
             Register as a Citizen
           </Link>
         </div>

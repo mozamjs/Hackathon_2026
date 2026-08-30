@@ -56,22 +56,22 @@ export const SignupPage = () => {
 
   return (
     <div className="max-w-md mx-auto py-8">
-      <div className="glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-2xl">
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-card sm:p-8">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-600 flex items-center justify-center text-white mx-auto mb-3 shadow-lg shadow-emerald-500/25">
-            <UserPlus className="w-7 h-7" />
+        <div className="mb-8 text-center">
+          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-sm">
+            <UserPlus className="h-7 w-7" />
           </div>
-          <h1 className="text-2xl font-black text-slate-100 font-sans">Citizen Registration</h1>
-          <p className="text-xs text-slate-400 mt-1">
-            Create an account to report issues, upvote neighbors, and track resolutions
+          <h1 className="text-2xl font-semibold text-slate-900">Citizen Registration</h1>
+          <p className="mt-1 text-sm text-slate-600">
+            Create an account to report issues, upvote neighbors, and track resolutions.
           </p>
         </div>
 
         {/* Error Alert */}
         {errorMessage && (
-          <div className="mb-6 p-3.5 rounded-xl bg-rose-950/80 border border-rose-500/40 text-rose-200 text-xs flex items-center gap-2">
-            <ShieldAlert className="w-4 h-4 text-rose-400 flex-shrink-0" />
+          <div className="mb-6 flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 p-3.5 text-sm text-red-700">
+            <ShieldAlert className="h-4 w-4 flex-shrink-0 text-red-500" />
             <span>{errorMessage}</span>
           </div>
         )}
@@ -118,7 +118,7 @@ export const SignupPage = () => {
             required
           />
 
-          <div className="text-xs text-slate-400 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+          <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm text-slate-600">
             🔒 By registering, you'll be able to submit municipal complaints, upvote local issues, and submit feedback when repairs are finished.
           </div>
 
@@ -128,16 +128,16 @@ export const SignupPage = () => {
             size="lg"
             loading={loading}
             icon={UserPlus}
-            className="w-full mt-2"
+            className="mt-2 w-full"
           >
             Create Citizen Account
           </Button>
         </form>
 
         {/* Login Prompt */}
-        <div className="text-center mt-6 pt-6 border-t border-slate-800 text-xs text-slate-400">
+        <div className="mt-6 border-t border-slate-200 pt-6 text-center text-sm text-slate-600">
           Already have an account?{' '}
-          <Link to="/login" className="text-brand-400 hover:text-brand-300 font-semibold underline">
+          <Link to="/login" className="font-semibold text-primary-700 underline-offset-2 hover:underline">
             Sign In here
           </Link>
         </div>

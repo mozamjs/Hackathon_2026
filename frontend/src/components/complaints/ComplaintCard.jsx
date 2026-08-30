@@ -30,7 +30,7 @@ export const ComplaintCard = ({
     !complaint.feedbackGiven;
 
   return (
-    <div className="group glass-card rounded-2xl p-5 border border-slate-800/90 hover:border-brand-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-brand-500/5 flex flex-col justify-between relative overflow-hidden">
+    <div className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-card transition-all duration-300 hover:border-slate-300 hover:shadow-soft">
       {/* Top Banner Accent for Critical/High */}
       {priority === 'critical' && (
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-600 via-rose-500 to-orange-500" />
@@ -52,22 +52,22 @@ export const ComplaintCard = ({
         {/* Title */}
         <Link
           to={`/complaints/${complaint._id}`}
-          className="block group/title text-base sm:text-lg font-bold text-slate-100 group-hover/title:text-brand-400 transition-colors line-clamp-2 mb-2"
+          className="mb-2 block text-base font-semibold text-slate-900 transition-colors group-hover/title:text-primary-700 sm:text-lg"
         >
           {complaint.title}
         </Link>
 
         {/* Description */}
-        <p className="text-sm text-slate-300/90 line-clamp-2 mb-4 leading-relaxed">
+        <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-slate-600">
           {complaint.description}
         </p>
 
         {/* Officer Remark Alert (if any) */}
         {complaint.officerRemark && (
-          <div className="mb-4 p-3 rounded-xl bg-slate-900/90 border border-slate-700/60 flex items-start gap-2.5 text-xs text-slate-300">
-            <ShieldAlert className="w-4 h-4 text-brand-400 flex-shrink-0 mt-0.5" />
+          <div className="mb-4 flex items-start gap-2.5 rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs text-amber-800">
+            <ShieldAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600" />
             <div>
-              <span className="font-semibold text-brand-300">Officer Remark: </span>
+              <span className="font-semibold">Officer Remark: </span>
               <span>{complaint.officerRemark}</span>
             </div>
           </div>
@@ -75,7 +75,7 @@ export const ComplaintCard = ({
 
         {/* Feedback Display if Resolved & Given */}
         {complaint.feedbackGiven && complaint.feedbackRating && (
-          <div className="mb-4 p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 flex items-center justify-between text-xs text-emerald-300">
+          <div className="mb-4 flex items-center justify-between rounded-xl border border-emerald-200 bg-emerald-50 p-2.5 text-xs text-emerald-800">
             <div className="flex items-center gap-1.5 font-medium">
               <div className="flex text-amber-400">
                 {[...Array(5)].map((_, i) => (
@@ -90,7 +90,7 @@ export const ComplaintCard = ({
               <span>Citizen Verified Resolution</span>
             </div>
             {complaint.feedbackComment && (
-              <span className="text-slate-400 truncate max-w-[150px] italic">
+              <span className="max-w-[150px] truncate italic text-slate-500">
                 "{complaint.feedbackComment}"
               </span>
             )}
@@ -99,20 +99,20 @@ export const ComplaintCard = ({
       </div>
 
       {/* Meta info & Action Footer */}
-      <div className="pt-4 border-t border-slate-800/80 mt-2">
-        <div className="flex flex-wrap items-center justify-between gap-y-3 gap-x-2 text-xs text-slate-400 mb-3">
-          <div className="flex items-center gap-1.5 text-slate-300 font-medium">
-            <MapPin className="w-3.5 h-3.5 text-brand-400" />
+      <div className="mt-2 border-t border-slate-200 pt-4">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-x-2 gap-y-3 text-xs text-slate-500">
+          <div className="flex items-center gap-1.5 font-medium text-slate-700">
+            <MapPin className="h-3.5 w-3.5 text-primary-600" />
             <span className="truncate max-w-[180px]">{complaint.area}</span>
           </div>
 
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1">
-              <Clock className="w-3.5 h-3.5 text-slate-500" />
+              <Clock className="h-3.5 w-3.5 text-slate-500" />
               <span>{formatRelativeTime(complaint.createdAt)}</span>
             </div>
-            <div className="flex items-center gap-1 text-slate-400">
-              <User className="w-3.5 h-3.5 text-slate-500" />
+            <div className="flex items-center gap-1 text-slate-500">
+              <User className="h-3.5 w-3.5 text-slate-500" />
               <span className="truncate max-w-[100px]">
                 {complaint.createdBy?.name || 'Citizen'}
               </span>
@@ -133,19 +133,19 @@ export const ComplaintCard = ({
                     e.stopPropagation();
                     if (onLeaveFeedback) onLeaveFeedback(complaint);
                   }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm transition-all"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-all hover:bg-emerald-500"
                 >
-                  <Star className="w-3.5 h-3.5" />
+                  <Star className="h-3.5 w-3.5" />
                   <span>Rate Resolution</span>
                 </button>
               )}
 
               <Link
                 to={`/complaints/${complaint._id}`}
-                className="inline-flex items-center gap-1 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-xl border border-slate-700 transition-colors"
+                className="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition-colors hover:border-slate-300 hover:bg-slate-50"
               >
                 <span>Details</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </div>

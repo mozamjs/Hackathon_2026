@@ -25,17 +25,17 @@ export const Button = ({
 
   const variants = {
     primary:
-      'bg-primary text-white shadow-sm hover:bg-[#1a3a8a] focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2',
+      'bg-primary-600 text-white shadow-sm hover:bg-primary-700 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2',
     secondary:
-      'bg-secondary text-white shadow-sm hover:bg-[#005a52] focus-visible:outline-2 focus-visible:outline-secondary focus-visible:outline-offset-2',
+      'bg-slate-800 text-white shadow-sm hover:bg-slate-900',
     outline:
-      'bg-transparent border border-outline-variant text-on-surface-variant hover:bg-surface-container hover:text-on-surface hover:border-outline',
+      'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300',
     ghost:
-      'bg-transparent text-on-surface-variant hover:bg-surface-container hover:text-on-surface',
+      'bg-transparent text-slate-700 hover:bg-slate-100 hover:text-slate-900',
     danger:
-      'bg-error text-white shadow-sm hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-error focus-visible:outline-offset-2',
+      'bg-red-600 text-white shadow-sm hover:bg-red-700',
     accent:
-      'bg-secondary text-white shadow-sm hover:bg-[#005a52]',
+      'bg-emerald-600 text-white shadow-sm hover:bg-emerald-700',
   };
 
   return (
@@ -44,7 +44,6 @@ export const Button = ({
       disabled={disabled || loading}
       onClick={onClick}
       className={`${base} ${sizes[size] || sizes.md} ${variants[variant] || variants.primary} ${className}`}
-      style={{ ['--tw-active-scale']: '0.98' }}
       {...props}
     >
       {loading ? (

@@ -18,7 +18,7 @@ export const Textarea = forwardRef(
     return (
       <div className="w-full flex flex-col gap-1.5">
         {label && (
-          <label htmlFor={textareaId} className="text-xs font-semibold uppercase tracking-wider text-slate-300">
+          <label htmlFor={textareaId} className="text-xs font-semibold uppercase tracking-[0.08em] text-slate-700">
             {label}
           </label>
         )}
@@ -26,15 +26,13 @@ export const Textarea = forwardRef(
           id={textareaId}
           ref={ref}
           rows={rows}
-          className={`w-full bg-slate-900/90 border rounded-xl p-3.5 text-sm text-slate-100 placeholder-slate-500 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 resize-y ${
-            error
-              ? 'border-rose-500/80 focus:ring-rose-500 focus:border-rose-500'
-              : 'border-slate-700/80 hover:border-slate-600'
+          className={`w-full rounded-lg border bg-white p-3.5 text-sm text-slate-800 placeholder:text-slate-400 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-primary-100 resize-y ${
+            error ? 'border-red-300 focus:border-red-400 focus:ring-red-100' : 'border-slate-200 hover:border-slate-300'
           } ${className}`}
           {...props}
         />
-        {error && <span className="text-xs text-rose-400 font-medium">{error}</span>}
-        {!error && helperText && <span className="text-xs text-slate-400">{helperText}</span>}
+        {error && <span className="text-xs text-red-600 font-medium">{error}</span>}
+        {!error && helperText && <span className="text-xs text-slate-500">{helperText}</span>}
       </div>
     );
   }

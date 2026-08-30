@@ -5,10 +5,12 @@ import Footer from './Footer';
 
 export const MainLayout = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-brand-500 selection:text-white">
+    <div className="app-shell flex min-h-screen flex-col bg-slate-50 text-slate-800">
       <Navbar />
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-in fade-in duration-300">
-        <Outlet />
+      <main className="mx-auto flex w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
+        <div className="w-full page-enter">
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </div>

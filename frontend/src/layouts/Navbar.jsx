@@ -7,7 +7,6 @@ import {
   PlusCircle,
   FolderOpen,
   LayoutDashboard,
-  FileText,
   LogOut,
   User,
   Menu,
@@ -30,230 +29,153 @@ export const Navbar = () => {
   };
 
   const navLinkClass = ({ isActive }) =>
-    `flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition-all ${
+    `flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
       isActive
-        ? 'bg-brand-600/20 text-brand-400 border border-brand-500/30'
-        : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+        ? 'bg-primary-50 text-primary-700'
+        : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
     }`;
 
   return (
-    <header className="sticky top-0 z-40 glass-header border-b border-slate-800/80 backdrop-blur-xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform duration-200">
-              <ShieldCheck className="w-6 h-6" />
+    <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur-sm">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <Link to="/" className="flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-600 text-white shadow-sm">
+              <ShieldCheck className="h-5 w-5" />
             </div>
-            <div className="flex flex-col">
-              <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-lg tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-brand-300 font-sans">
-                  CivicFix
-                </span>
-                <span className="text-[10px] font-bold uppercase tracking-wider bg-brand-500/20 text-brand-300 px-1.5 py-0.5 rounded border border-brand-500/30">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-lg font-semibold text-slate-900">CivicFix</span>
+                <span className="rounded border border-primary-200 bg-primary-50 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-primary-700">
                   Portal
                 </span>
               </div>
-              <span className="text-[11px] text-slate-400 -mt-1 hidden sm:block">
-                Citizen Resolution Platform
-              </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1.5">
-            <NavLink to="/" className={navLinkClass}>
-              Home
-            </NavLink>
+          <nav className="hidden items-center gap-1 md:flex">
+            <NavLink to="/" className={navLinkClass}>Home</NavLink>
             <NavLink to="/complaints" className={navLinkClass}>
-              <Compass className="w-4 h-4" />
-              <span>Browse Issues</span>
+              <Compass className="h-4 w-4" />
+              Browse Complaints
             </NavLink>
 
             {isAuthenticated && isCitizen && (
               <>
                 <NavLink to="/dashboard" className={navLinkClass}>
-                  <LayoutDashboard className="w-4 h-4" />
-                  <span>My Dashboard</span>
+                  <LayoutDashboard className="h-4 w-4" />
+                  Dashboard
                 </NavLink>
                 <NavLink to="/complaints/mine" className={navLinkClass}>
-                  <FolderOpen className="w-4 h-4" />
-                  <span>My Complaints</span>
+                  <FolderOpen className="h-4 w-4" />
+                  My Complaints
                 </NavLink>
-                <NavLink
-                  to="/complaints/new"
-                  className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-semibold bg-emerald-600/20 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-600/30 transition-all ml-1 shadow-sm"
-                >
-                  <PlusCircle className="w-4 h-4 text-emerald-400" />
-                  <span>Report Issue</span>
+                <NavLink to="/complaints/new" className={navLinkClass}>
+                  <PlusCircle className="h-4 w-4" />
+                  Report
                 </NavLink>
               </>
             )}
 
             {isAuthenticated && isOfficer && (
-              <>
-                <NavLink to="/officer/dashboard" className={navLinkClass}>
-                  <LayoutDashboard className="w-4 h-4" />
-                  <span>Officer Portal</span>
-                </NavLink>
-              </>
+              <NavLink to="/officer/dashboard" className={navLinkClass}>
+                <LayoutDashboard className="h-4 w-4" />
+                Dashboard
+              </NavLink>
             )}
           </nav>
 
-          {/* User / Auth Actions */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden items-center gap-3 md:flex">
             {isAuthenticated ? (
               <div className="flex items-center gap-3">
-                <div className="flex items-center gap-2.5 px-3 py-1.5 bg-slate-900 border border-slate-700/80 rounded-xl">
-                  <div
-                    className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold ${
-                      isOfficer
-                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
-                        : 'bg-brand-500/20 text-brand-300 border border-brand-500/30'
-                    }`}
-                  >
-                    {isOfficer ? '👮' : <User className="w-4 h-4" />}
+                <div className="flex items-center gap-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary-100 text-primary-700">
+                    {isOfficer ? 'O' : <User className="h-4 w-4" />}
                   </div>
-                  <div className="flex flex-col text-left">
-                    <span className="text-xs font-bold text-slate-200 leading-tight">
-                      {user?.name || 'User'}
-                    </span>
-                    <span className="text-[10px] text-slate-400 font-medium capitalize">
-                      {user?.role}
-                    </span>
+                  <div className="text-left">
+                    <div className="text-sm font-semibold text-slate-900">{user?.name || 'User'}</div>
+                    <div className="text-[10px] uppercase tracking-[0.08em] text-slate-500">{user?.role}</div>
                   </div>
                 </div>
-                <Button
-                  onClick={handleLogout}
-                  variant="ghost"
-                  size="sm"
-                  className="text-slate-400 hover:text-rose-400 hover:bg-rose-950/30"
-                  title="Sign Out"
-                >
-                  <LogOut className="w-4 h-4" />
+                <Button onClick={handleLogout} variant="ghost" size="sm" className="gap-1.5 text-slate-700">
+                  <LogOut className="h-4 w-4" />
+                  Logout
                 </Button>
               </div>
             ) : (
               <div className="flex items-center gap-2">
                 <Link to="/login">
-                  <Button variant="ghost" size="sm">
-                    Sign In
-                  </Button>
+                  <Button variant="ghost" size="sm">Sign In</Button>
                 </Link>
                 <Link to="/signup">
-                  <Button variant="primary" size="sm">
-                    Register
-                  </Button>
+                  <Button variant="primary" size="sm">Register</Button>
                 </Link>
               </div>
             )}
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center gap-2">
+          <div className="flex items-center md:hidden">
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              className="rounded-md p-2 text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+              aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden glass-panel border-b border-slate-800 p-4 animate-in slide-in-from-top-4 duration-200">
-          <div className="flex flex-col gap-2">
-            <NavLink
-              to="/"
-              onClick={() => setMobileMenuOpen(false)}
-              className={navLinkClass}
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/complaints"
-              onClick={() => setMobileMenuOpen(false)}
-              className={navLinkClass}
-            >
-              <Compass className="w-4 h-4" />
-              <span>Browse Issues</span>
+        <div className="border-t border-slate-200 bg-white md:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3">
+            <NavLink to="/" onClick={() => setMobileMenuOpen(false)} className={navLinkClass}>Home</NavLink>
+            <NavLink to="/complaints" onClick={() => setMobileMenuOpen(false)} className={navLinkClass}>
+              <Compass className="h-4 w-4" />Browse Complaints
             </NavLink>
 
             {isAuthenticated && isCitizen && (
               <>
-                <NavLink
-                  to="/dashboard"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={navLinkClass}
-                >
-                  <LayoutDashboard className="w-4 h-4" />
-                  <span>My Dashboard</span>
+                <NavLink to="/dashboard" onClick={() => setMobileMenuOpen(false)} className={navLinkClass}>
+                  <LayoutDashboard className="h-4 w-4" />Dashboard
                 </NavLink>
-                <NavLink
-                  to="/complaints/mine"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={navLinkClass}
-                >
-                  <FolderOpen className="w-4 h-4" />
-                  <span>My Complaints</span>
+                <NavLink to="/complaints/mine" onClick={() => setMobileMenuOpen(false)} className={navLinkClass}>
+                  <FolderOpen className="h-4 w-4" />My Complaints
                 </NavLink>
-                <NavLink
-                  to="/complaints/new"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-sm font-semibold bg-emerald-600/20 text-emerald-300 border border-emerald-500/30"
-                >
-                  <PlusCircle className="w-4 h-4 text-emerald-400" />
-                  <span>Report New Issue</span>
+                <NavLink to="/complaints/new" onClick={() => setMobileMenuOpen(false)} className={navLinkClass}>
+                  <PlusCircle className="h-4 w-4" />Report Complaint
                 </NavLink>
               </>
             )}
 
             {isAuthenticated && isOfficer && (
-              <NavLink
-                to="/officer/dashboard"
-                onClick={() => setMobileMenuOpen(false)}
-                className={navLinkClass}
-              >
-                <LayoutDashboard className="w-4 h-4" />
-                <span>Officer Dashboard</span>
+              <NavLink to="/officer/dashboard" onClick={() => setMobileMenuOpen(false)} className={navLinkClass}>
+                <LayoutDashboard className="h-4 w-4" />Officer Dashboard
               </NavLink>
             )}
 
-            <div className="pt-3 mt-2 border-t border-slate-800">
+            <div className="mt-2 border-t border-slate-200 pt-3">
               {isAuthenticated ? (
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-300 border border-brand-500/30 flex items-center justify-center font-bold text-xs">
-                      {isOfficer ? '👮' : user?.name?.charAt(0) || 'U'}
+                    <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary-100 text-primary-700 text-sm font-semibold">
+                      {isOfficer ? 'O' : user?.name?.charAt(0) || 'U'}
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-slate-200">{user?.name}</div>
-                      <div className="text-xs text-slate-400 capitalize">{user?.role}</div>
+                      <div className="text-sm font-semibold text-slate-900">{user?.name}</div>
+                      <div className="text-[10px] uppercase tracking-[0.08em] text-slate-500">{user?.role}</div>
                     </div>
                   </div>
-                  <Button
-                    onClick={handleLogout}
-                    variant="danger"
-                    size="sm"
-                    className="text-xs"
-                  >
-                    <LogOut className="w-3.5 h-3.5 mr-1" />
-                    Logout
-                  </Button>
+                  <Button onClick={handleLogout} variant="danger" size="sm">Logout</Button>
                 </div>
               ) : (
                 <div className="grid grid-cols-2 gap-2">
                   <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
-                    <Button variant="outline" size="sm" className="w-full">
-                      Sign In
-                    </Button>
+                    <Button variant="outline" size="sm" className="w-full">Sign In</Button>
                   </Link>
                   <Link to="/signup" onClick={() => setMobileMenuOpen(false)}>
-                    <Button variant="primary" size="sm" className="w-full">
-                      Register
-                    </Button>
+                    <Button variant="primary" size="sm" className="w-full">Register</Button>
                   </Link>
                 </div>
               )}

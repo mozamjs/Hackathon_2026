@@ -30,7 +30,6 @@ export const StatusBadge = ({ status, size = 'md' }) => {
     );
   }
 
-  // pending
   return (
     <span className={`${base} bg-amber-50 text-amber-700 border-amber-200`}>
       <Clock className="w-3.5 h-3.5" />

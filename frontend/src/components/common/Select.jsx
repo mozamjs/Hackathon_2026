@@ -19,7 +19,7 @@ export const Select = forwardRef(
     return (
       <div className="w-full flex flex-col gap-1.5">
         {label && (
-          <label htmlFor={selectId} className="text-xs font-semibold uppercase tracking-wider text-slate-300">
+          <label htmlFor={selectId} className="text-xs font-semibold uppercase tracking-[0.08em] text-slate-700">
             {label}
           </label>
         )}
@@ -27,15 +27,13 @@ export const Select = forwardRef(
           <select
             id={selectId}
             ref={ref}
-            className={`w-full appearance-none bg-slate-900/90 border rounded-xl px-3.5 py-2.5 pr-10 text-sm text-slate-100 placeholder-slate-500 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 cursor-pointer ${
-              error
-                ? 'border-rose-500/80 focus:ring-rose-500 focus:border-rose-500'
-                : 'border-slate-700/80 hover:border-slate-600'
+            className={`w-full appearance-none rounded-lg border bg-white px-3.5 py-2.5 pr-10 text-sm text-slate-800 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-primary-100 cursor-pointer ${
+              error ? 'border-red-300 focus:border-red-400 focus:ring-red-100' : 'border-slate-200 hover:border-slate-300'
             } ${className}`}
             {...props}
           >
             {options.map((opt) => (
-              <option key={opt.value ?? opt.id} value={opt.value ?? opt.id} className="bg-slate-900 text-slate-100">
+              <option key={opt.value ?? opt.id} value={opt.value ?? opt.id} className="bg-white text-slate-800">
                 {opt.label || opt.name}
               </option>
             ))}
@@ -44,8 +42,8 @@ export const Select = forwardRef(
             <ChevronDown className="w-4 h-4" />
           </div>
         </div>
-        {error && <span className="text-xs text-rose-400 font-medium">{error}</span>}
-        {!error && helperText && <span className="text-xs text-slate-400">{helperText}</span>}
+        {error && <span className="text-xs text-red-600 font-medium">{error}</span>}
+        {!error && helperText && <span className="text-xs text-slate-500">{helperText}</span>}
       </div>
     );
   }
